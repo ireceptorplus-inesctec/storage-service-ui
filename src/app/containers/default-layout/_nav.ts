@@ -12,6 +12,15 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
+    name: 'Files'
+  },
+  {
+    name: 'Datasets',
+    url: '/files/list',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
+    title: true,
     name: 'Theme'
   },
   {

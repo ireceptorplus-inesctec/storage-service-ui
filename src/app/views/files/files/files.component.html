@@ -1,0 +1,65 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>List of Availible Datasets</strong>
+      </c-card-header>
+      <c-card-body>
+        <p class="text-medium-emphasis small">
+          Using the most basic table CoreUI, here&#39;s how <code>cTable</code>-based
+          tables look in CoreUI.
+        </p>
+        <table cTable>
+          <thead>
+            <tr>
+              <th scope="col">UUID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let file of files">
+              <th scope="row">{{ file.uuid }}</th>
+              <td>{{ file.name }}</td>
+              <td>{{ file.description }}</td>
+              <td>{{ file.creationDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>Angular Form Control</strong> <small>File input</small>
+      </c-card-header>
+      <c-card-body>
+        <app-docs-example href="forms/form-control#file-input">
+          <div class="mb-3">
+            <label cLabel for="formFile">Default file input example</label>
+            <input cFormControl id="formFile" type="file" />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="formFileMultiple">Multiple files input example</label>
+            <input cFormControl id="formFileMultiple" multiple type="file" />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="formFileDisabled">Disabled file input example</label>
+            <input cFormControl disabled id="formFileDisabled" type="file" />
+          </div>
+          <div class="mb-3">
+            <label cLabel for="formFileSm">Small file input example</label>
+            <input cFormControl id="formFileSm" sizing="sm" type="file" />
+          </div>
+          <div>
+            <label cLabel for="formFileLg">Large file input example</label>
+            <input cFormControl id="formFileLg" sizing="lg" type="file" />
+          </div>
+        </app-docs-example>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
