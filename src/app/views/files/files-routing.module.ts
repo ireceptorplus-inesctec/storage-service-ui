@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FilesComponent } from './files/files.component';
+import { DatasetsTableComponent } from './datasets-table/datasets-table.component';
+import { GermlineTableComponent } from './germline-table/germline-table.component';
 
 const routes: Routes = [
   {
@@ -11,13 +12,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'list',
+        redirectTo: 'datasets',
       },
       {
-        path: 'list',
-        component: FilesComponent,
+        path: 'datasets',
+        component: DatasetsTableComponent,
         data: {
-          title: 'File List',
+          title: 'Datasets List',
+        },
+      },
+      {
+        path: 'germlines',
+        component: GermlineTableComponent,
+        data: {
+          title: 'Germline List',
         },
       }
     ],

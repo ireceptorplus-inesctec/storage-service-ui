@@ -8,14 +8,16 @@ import {
   CardModule,
   FormModule,
   GridModule,
+  ModalModule,
   TableModule,
 } from '@coreui/angular';
 
 import { ComponentsModule } from 'src/components/components.module';
-
-import { FilesComponent } from './files/files.component';
-
+import { FilesTableComponent } from './files-table/files-table.component';
 import { FilesRoutingModule } from './files-routing.module';
+import { GermlineTableComponent } from './germline-table/germline-table.component';
+import { DatasetsTableComponent } from './datasets-table/datasets-table.component';
+import { FilesCreateComponent } from './files-create/files-create.component';
 
 @NgModule({
   imports: [
@@ -31,9 +33,14 @@ import { FilesRoutingModule } from './files-routing.module';
     ButtonModule,
     ButtonGroupModule,
     FormModule,
+
+    ModalModule
   ],
   declarations: [
-    FilesComponent
+    FilesTableComponent,
+    FilesCreateComponent,
+    DatasetsTableComponent,
+    GermlineTableComponent
   ]
 })
 export class FilesModule {}

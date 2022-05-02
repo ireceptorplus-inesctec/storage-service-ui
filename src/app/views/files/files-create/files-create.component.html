@@ -1,0 +1,35 @@
+<c-row>
+    <c-col xs="12">
+        <c-card class="mb-4">
+        <c-card-header ngPreserveWhitespaces>
+            <strong>Angular Modal</strong> <small>Live demo</small>
+        </c-card-header>
+        <c-card-body>
+            <p class="text-medium-emphasis small">
+            Toggle a working modal demo by clicking the button below. It will slide down and fade
+            in from the top of the page.
+            </p>
+            <app-docs-example href="components/modal#live-demo">
+            <ng-container *ngTemplateOutlet="liveDemo"></ng-container>
+            </app-docs-example>
+        </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>
+
+<ng-template #liveDemo>
+    <button (click)="toggleLiveDemo()" cButton>Launch demo modal</button>
+    <c-modal id="liveDemoModal" [visible]="liveDemoVisible" (visibleChange)="handleLiveDemoChange($event)">
+        <c-modal-header>
+        <h5 cModalTitle>Modal title</h5>
+        <button (click)="toggleLiveDemo()" cButtonClose></button>
+        </c-modal-header>
+        <c-modal-body>Woohoo, you&#39;re reading this text in a modal!</c-modal-body>
+        <c-modal-footer>
+        <button (click)="toggleLiveDemo()" cButton color="secondary">
+            Close
+        </button>
+        <button cButton color="primary">Save changes</button>
+        </c-modal-footer>
+    </c-modal>
+</ng-template>

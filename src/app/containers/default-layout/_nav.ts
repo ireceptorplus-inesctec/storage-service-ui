@@ -16,7 +16,12 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Datasets',
-    url: '/files/list',
+    url: '/files/datasets',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
+    name: 'Germlines',
+    url: '/files/germlines',
     iconComponent: { name: 'cil-file' }
   },
   {
