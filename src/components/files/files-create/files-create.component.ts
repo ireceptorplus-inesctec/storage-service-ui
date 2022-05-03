@@ -6,18 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./files-create.component.scss']
 })
 export class FilesCreateComponent implements OnInit {
-  public liveDemoVisible = false;
+  public modalFileOpen = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toggleLiveDemo() {
-    this.liveDemoVisible = !this.liveDemoVisible;
+  toggleModalFile() {
+    this.modalFileOpen = !this.modalFileOpen;
   }
 
-  handleLiveDemoChange(event: boolean) {
-    this.liveDemoVisible = event;
+  handleModalFileChange(event: boolean) {
+    this.modalFileOpen = event;
   }
 }

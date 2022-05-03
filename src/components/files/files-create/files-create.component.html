@@ -9,20 +9,31 @@
 </c-row>
 
 <ng-template #liveDemo>
-    <button (click)="toggleLiveDemo()" cButton>
+    <button (click)="toggleModalFile()" cButton>
         Add File
     </button>
-    <c-modal id="liveDemoModal" [visible]="liveDemoVisible" (visibleChange)="handleLiveDemoChange($event)">
+    <c-modal id="liveDemoModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
         <c-modal-header>
-        <h5 cModalTitle>Modal title</h5>
-        <button (click)="toggleLiveDemo()" cButtonClose></button>
+            <h5 cModalTitle>Add a new file</h5>
+            <button (click)="toggleModalFile()" cButtonClose></button>
         </c-modal-header>
-        <c-modal-body>Woohoo, you&#39;re reading this text in a modal!</c-modal-body>
+        <c-modal-body>
+            <form cForm>
+                <div class="mb-3">
+                    <label cLabel for="formFileMultiple">Select files to upload</label>
+                    <input cFormControl id="formFileMultiple" multiple type="file" />
+                </div>
+                <div class="mb-3">
+                    <label cLabel for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea cFormControl id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </form>
+        </c-modal-body>
         <c-modal-footer>
-        <button (click)="toggleLiveDemo()" cButton color="secondary">
-            Close
-        </button>
-        <button cButton color="primary">Save changes</button>
+            <button (click)="toggleModalFile()" cButton color="secondary">
+                Close
+            </button>
+            <button cButton color="primary">Start Upload</button>
         </c-modal-footer>
     </c-modal>
 </ng-template>
