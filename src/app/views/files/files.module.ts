@@ -12,12 +12,16 @@ import {
   TableModule,
 } from '@coreui/angular';
 
-import { ComponentsModule } from 'src/components/components.module';
-import { FilesTableComponent } from './files-table/files-table.component';
 import { FilesRoutingModule } from './files-routing.module';
-import { GermlineTableComponent } from './germline-table/germline-table.component';
-import { DatasetsTableComponent } from './datasets-table/datasets-table.component';
-import { FilesCreateComponent } from './files-create/files-create.component';
+
+import { ComponentsModule } from 'src/components/components.module';
+import { FilesTableComponent } from 'src/components/files/files-table/files-table.component'
+import { FilesCreateComponent } from 'src/components/files/files-create/files-create.component'
+
+import { GermlinesComponent } from './germlines/germlines.component';
+import { DatasetsComponent } from './datasets/datasets.component';
+
+import { IconModule } from '@coreui/icons-angular';
 
 @NgModule({
   imports: [
@@ -34,13 +38,14 @@ import { FilesCreateComponent } from './files-create/files-create.component';
     ButtonGroupModule,
     FormModule,
 
-    ModalModule
+    ModalModule,
+    IconModule
   ],
   declarations: [
     FilesTableComponent,
     FilesCreateComponent,
-    DatasetsTableComponent,
-    GermlineTableComponent
+    DatasetsComponent,
+    GermlinesComponent
   ]
 })
 export class FilesModule {}

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FilesModel } from 'src/models/files';
 
 @Component({
-  selector: 'app-datasets-table',
-  templateUrl: './datasets-table.component.html',
-  styleUrls: ['./datasets-table.component.scss']
+  selector: 'app-datasets',
+  templateUrl: './datasets.component.html',
+  styleUrls: ['./datasets.component.scss']
 })
-export class DatasetsTableComponent implements OnInit {
+export class DatasetsComponent implements OnInit {
   datasets: FilesModel[] = [];
 
   constructor() {}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DatasetsTableComponent } from './datasets-table/datasets-table.component';
-import { GermlineTableComponent } from './germline-table/germline-table.component';
+import { DatasetsComponent } from './datasets/datasets.component';
+import { GermlinesComponent } from './germlines/germlines.component';
 
 const routes: Routes = [
   {
@@ -16,14 +16,14 @@ const routes: Routes = [
       },
       {
         path: 'datasets',
-        component: DatasetsTableComponent,
+        component: DatasetsComponent,
         data: {
           title: 'Datasets List',
         },
       },
       {
         path: 'germlines',
-        component: GermlineTableComponent,
+        component: GermlinesComponent,
         data: {
           title: 'Germline List',
         },

@@ -3,10 +3,10 @@ import { FilesModel } from 'src/models/files';
 
 @Component({
   selector: 'app-germline-table',
-  templateUrl: './germline-table.component.html',
-  styleUrls: ['./germline-table.component.scss']
+  templateUrl: './germlines.component.html',
+  styleUrls: ['./germlines.component.scss']
 })
-export class GermlineTableComponent implements OnInit {
+export class GermlinesComponent implements OnInit {
   germlines: FilesModel[] = [];
 
   constructor() {}
