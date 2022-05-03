@@ -1,8 +1,6 @@
-import {Service} from './service';
-import {environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 export class HttpClientService<T> {
-
   /**
    * The base api url
    * Example: https://serveraddr:4200/api/
@@ -15,49 +13,44 @@ export class HttpClientService<T> {
    * Example: dataset.
    * Therefore, the absolute URL built would be: https://serveraddr:4200/api/dataset
    */
-  constructor(
-    protected endpointName?: string) {
-  }
+  constructor(protected endpointName?: string) {}
 
   protected getFileTypeApiUrl(): string {
     return this.baseApiUrl + '/' + this.endpointName;
   }
 
-  protected apiFetch<T>(url: string, method?: string, body?: any): Promise<T> {
+  public async request(url: string, method?: string, body?: any): Promise<any> {
     return fetch(url, {
       method: method ?? 'GET',
-      body: body ?? null
-    }).then(response => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json() as Promise<T>;
-      });
+      body: body ?? null,
+    }).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
 
+      return response.json() as Promise<any>;
+    });
   }
 
-  public create<T>(elem: T): Promise<T>
-  {
+  public create(elem: T): Promise<T> {
     const body = JSON.stringify(elem);
-    return this.apiFetch(this.getFileTypeApiUrl(), 'POST', body);
+    return this.request(this.getFileTypeApiUrl(), 'POST', body);
   }
 
-  public createFile<T>(elem: T, file: File): Promise<T>
-  {
+  public createFile(elem: T, file: File): Promise<T> {
     const elemStr = JSON.stringify(elem);
     const formData = new FormData();
     formData.append('metadata', elemStr);
     formData.append('file', file, file.name);
-    return this.apiFetch(this.getFileTypeApiUrl(), 'POST', formData);
+
+    return this.request(this.getFileTypeApiUrl(), 'POST', formData);
   }
 
-  public getAll<T>(): Promise<T>
-  {
-    return this.apiFetch<T>(this.getFileTypeApiUrl());
+  public getAll(): Promise<T[]> {
+    return this.request(this.getFileTypeApiUrl());
   }
 
-  public getById<T>(id: string): Promise<T>
-  {
-    return this.apiFetch<T>(this.getFileTypeApiUrl() + `/${id}`);
+  public getById(id: string): Promise<T> {
+    return this.request(this.getFileTypeApiUrl() + `/${id}`);
   }
 }

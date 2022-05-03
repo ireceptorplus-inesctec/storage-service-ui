@@ -26,6 +26,15 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
+    name: 'Pipelines'
+  },
+  {
+    name: 'Tools',
+    url: '/pipelines/tools',
+    iconComponent: { name: 'cil-input-power' }
+  },
+  {
+    title: true,
     name: 'Theme'
   },
   {

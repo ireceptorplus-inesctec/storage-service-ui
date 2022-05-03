@@ -1,10 +1,7 @@
-import {HttpClientService} from './http-client-service';
-import {Injectable} from '@angular/core';
-import {Metadata} from '../metadata';
+import { HttpClientService } from './http-client-service';
+import { FilesModel } from 'src/models/files';
 
-
-export class DatasetService extends HttpClientService<Metadata>
-{
+export class DatasetService extends HttpClientService<FilesModel> {
   constructor() {
     super('dataset');
   }

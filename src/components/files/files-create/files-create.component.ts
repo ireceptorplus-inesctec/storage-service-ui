@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'files-create',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./files-create.component.scss']
 })
 export class FilesCreateComponent implements OnInit {
+  @Output() onFileUpload = new EventEmitter<boolean>()
   public modalFileOpen = false;
 
   constructor() { }
@@ -19,5 +20,9 @@ export class FilesCreateComponent implements OnInit {
 
   handleModalFileChange(event: boolean) {
     this.modalFileOpen = event;
+  }
+
+  uploadFile() {
+    this.onFileUpload.emit(true);
   }
 }
