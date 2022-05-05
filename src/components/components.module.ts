@@ -7,6 +7,7 @@ import { IconModule } from '@coreui/icons-angular';
 import { DocsExampleComponent } from './docs-example/docs-example.component';
 import { DocsLinkComponent } from './docs-link/docs-link.component';
 import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
     RouterModule,
     TabsModule,
     UtilitiesModule,
-    CalloutModule
+    CalloutModule,
+    FormsModule,
   ]
 })
 export class ComponentsModule {

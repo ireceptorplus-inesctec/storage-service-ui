@@ -21,15 +21,15 @@
             <form cForm>
                 <div class="mb-3">
                     <label cLabel for="fileName">Name</label>
-                    <input cFormControl name="fileName" id="fileName" type="text" />
+                    <input cFormControl name="fileName" id="fileName" type="text" [(ngModel)]="metadata.name" />
                 </div>
                 <div class="mb-3">
                     <label cLabel for="fileDescription">Description</label>
-                    <input cFormControl name="fileDescription" id="fileDescription" type="text" />
+                    <input cFormControl name="fileDescription" id="fileDescription" type="text" [(ngModel)]="metadata.description"/>
                 </div>
                 <div class="mb-3">
                     <label cLabel for="formFile">Select files to upload</label>
-                    <input cFormControl name="file" id="formFile" multiple type="file" />
+                    <input cFormControl name="file" id="formFile" multiple type="file" [(ngModel)]="file"/>
                 </div>
             </form>
         </c-modal-body>

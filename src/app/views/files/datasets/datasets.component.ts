@@ -18,8 +18,8 @@ export class DatasetsComponent implements OnInit {
     })
   }
 
-  uploadDataset(formData) {
-    let file = new FilesModel();
-    this.datasetService.createFile()
+  uploadDataset() {
+    const file = new FilesModel();
+    //this.datasetService.createFile();
   }
 }
