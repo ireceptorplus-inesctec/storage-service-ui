@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { HashLocationStrategy, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {
   PERFECT_SCROLLBAR_CONFIG,
@@ -76,7 +75,6 @@ const APP_CONTAINERS = [
     FormModule,
     UtilitiesModule,
     ButtonGroupModule,
-    ReactiveFormsModule,
     SidebarModule,
     SharedModule,
     TabsModule,
@@ -84,8 +82,7 @@ const APP_CONTAINERS = [
     ProgressModule,
     BadgeModule,
     ListGroupModule,
-    CardModule,
-    FormsModule,
+    CardModule
   ],
   providers: [
     {

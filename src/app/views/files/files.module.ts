@@ -23,8 +23,12 @@ import { DatasetsComponent } from './datasets/datasets.component';
 
 import { IconModule } from '@coreui/icons-angular';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
+    FormsModule,
+
     FilesRoutingModule,
     CommonModule,
     ReactiveFormsModule,
