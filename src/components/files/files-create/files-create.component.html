@@ -18,18 +18,18 @@
             <button (click)="toggleModalFile()" cButtonClose></button>
         </c-modal-header>
         <c-modal-body>
-            <form cForm>
-                <div class="mb-3">
-                    <label cLabel for="fileName">Name</label>
-                    <input cFormControl name="fileName" id="fileName" type="text" [(ngModel)]="metadata.name" />
+            <form cForm [formGroup]="fileCreateForm" >
+                <div class="mb-3 form-group">
+                    <label cLabel for="name">Name</label>
+                    <input cFormControl name="name" id="name" type="text" formControlName="name" />
                 </div>
-                <div class="mb-3">
-                    <label cLabel for="fileDescription">Description</label>
-                    <input cFormControl name="fileDescription" id="fileDescription" type="text" [(ngModel)]="metadata.description"/>
+                <div class="mb-3 form-group">
+                    <label cLabel for="description">Description</label>
+                    <input cFormControl name="description" id="description" type="text" formControlName="description" />
                 </div>
-                <div class="mb-3">
-                    <label cLabel for="formFile">Select files to upload</label>
-                    <input cFormControl name="file" id="formFile" multiple type="file" [(ngModel)]="file"/>
+                <div class="mb-3 form-group">
+                    <label cLabel for="file">Select files to upload</label>
+                    <input cFormControl name="file" id="file" multiple type="file" formControlName="file" />
                 </div>
             </form>
         </c-modal-body>
@@ -37,7 +37,7 @@
             <button (click)="toggleModalFile()" cButton color="secondary">
                 Close
             </button>
-            <button (click)="uploadFile()" cButton color="primary">Start Upload</button>
+            <button (click)="submit()" cButton color="primary">Start Upload</button>
         </c-modal-footer>
     </c-modal>
 </ng-template>

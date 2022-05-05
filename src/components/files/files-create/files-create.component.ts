@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {FilesModel} from "../../../models/files";
+import { FilesModel } from "../../../models/files";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: 'files-create',
@@ -7,10 +8,16 @@ import {FilesModel} from "../../../models/files";
   styleUrls: ['./files-create.component.scss']
 })
 export class FilesCreateComponent implements OnInit {
-  @Output() onFileUpload = new EventEmitter<boolean>()
+  @Output() onFileUpload = new EventEmitter<boolean>();
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
   file!: File;
+
+  fileCreateForm = new FormGroup({
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    description: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    file: new FormControl('', []),
+  });
 
   constructor() { }
 
@@ -25,8 +32,9 @@ export class FilesCreateComponent implements OnInit {
     this.modalFileOpen = event;
   }
 
-  uploadFile() {
-
+  submit() {
+    let name = this.fileCreateForm.get('name')?.value;
+    console.log(name);
     this.onFileUpload.emit(true);
   }
 }
