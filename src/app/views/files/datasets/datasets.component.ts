@@ -18,8 +18,12 @@ export class DatasetsComponent implements OnInit {
     })
   }
 
-  uploadDataset() {
-    const file = new FilesModel();
-    //this.datasetService.createFile();
+  uploadDataset(event: any) {
+    const metadata = new FilesModel();
+    console.log(event);
+    metadata.name = event.name;
+    metadata.description = event.description;
+    let file: File = event.file;
+    this.datasetService.createFile(metadata, file);
   }
 }

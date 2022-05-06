@@ -29,7 +29,7 @@
                 </div>
                 <div class="mb-3 form-group">
                     <label cLabel for="file">Select files to upload</label>
-                    <input cFormControl name="file" id="file" multiple type="file" formControlName="file" />
+                    <input cFormControl name="file" id="file" multiple type="file" formControlName="file" (change)="onFileChange($event)" />
                 </div>
             </form>
         </c-modal-body>
