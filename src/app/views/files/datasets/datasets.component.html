@@ -1,2 +1,2 @@
-<files-create (onFileUpload)="uploadDataset($event)"></files-create>
+<files-create [fileService]="datasetService"></files-create>
 <files-table [files]="datasets"></files-table>
