@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
 import { FilesModel } from "../../../models/files";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateData } from "./file-create-data";
+import { HttpClientService } from "../../../app/services/http-client-service";
 
 @Component({
   selector: 'files-create',
@@ -9,10 +10,21 @@ import { FileCreateData } from "./file-create-data";
   styleUrls: ['./files-create.component.scss']
 })
 export class FilesCreateComponent implements OnInit {
+  /**
+   * This EventEmitter is used to signal main component to create the file.
+   */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
+
+  @Input() fileService!: HttpClientService<FilesModel>;
+
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
   file!: File;
+
+  creationResult!: boolean;
+  creationResultMsgTitle!: String;
+  creationResultMsgDescription!: String;
+
 
   fileCreateForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -20,7 +32,8 @@ export class FilesCreateComponent implements OnInit {
     file: new FormControl('', []),
   });
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -33,16 +46,20 @@ export class FilesCreateComponent implements OnInit {
     this.modalFileOpen = event;
   }
 
-  onFileChange(event: any)
-  {
+  onFileChange(event: any) {
     this.file = event.target.files[0];
   }
 
   submit() {
-    let fileCreateData = new FileCreateData();
-    fileCreateData.name = this.fileCreateForm.get('name')?.value;
-    fileCreateData.description = this.fileCreateForm.get('description')?.value;
-    fileCreateData.file = this.file;
-    this.onFileUpload.emit(fileCreateData);
+    const metadata = new FilesModel();
+    metadata.name = this.fileCreateForm.get('name')?.value;
+    metadata.description = this.fileCreateForm.get('description')?.value;
+    this.fileService.createFile(metadata, this.file).then(serverReturn => {
+        let datasetModel: FilesModel = serverReturn;
+        this.showResultMessageToast(true, serverReturn);
+      },
+      serverReturn => {
+        this.showResultMessageToast(false, serverReturn);
+      });
   }
 }

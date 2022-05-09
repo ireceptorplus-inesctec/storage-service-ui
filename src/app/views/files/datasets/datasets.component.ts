@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { DatasetService } from 'src/app/services/dataset-service';
 import { FilesModel } from 'src/models/files';
+import { FilesCreateComponent } from "../../../../components/files/files-create/files-create.component";
 
 @Component({
   templateUrl: './datasets.component.html',
@@ -10,20 +11,13 @@ export class DatasetsComponent implements OnInit {
   datasets: FilesModel[] = [];
   datasetService = new DatasetService;
 
+  @ViewChild(FilesCreateComponent) filesCreateComponent!: FilesCreateComponent;
+
   constructor() {}
 
   ngOnInit(): void {
     this.datasetService.getAll().then(datasets => {
       this.datasets = datasets;
     })
-  }
-
-  uploadDataset(event: any) {
-    const metadata = new FilesModel();
-    console.log(event);
-    metadata.name = event.name;
-    metadata.description = event.description;
-    let file: File = event.file;
-    this.datasetService.createFile(metadata, file);
   }
 }
