@@ -1,8 +1,9 @@
-import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ViewChildren, QueryList, ViewChild } from '@angular/core';
 import { FilesModel } from "../../../models/files";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateData } from "./file-create-data";
 import { HttpClientService } from "../../../app/services/http-client-service";
+import { FilesCreateResultToastComponent } from "../files-create-result-toast/files-create-result-toast.component";
 
 @Component({
   selector: 'files-create',
@@ -24,6 +25,8 @@ export class FilesCreateComponent implements OnInit {
   creationResult!: boolean;
   creationResultMsgTitle!: String;
   creationResultMsgDescription!: String;
+
+  @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
 
   fileCreateForm = new FormGroup({
@@ -62,4 +65,17 @@ export class FilesCreateComponent implements OnInit {
         this.showResultMessageToast(false, serverReturn);
       });
   }
+
+  private showResultMessageToast(success: boolean, serverReturn: any) {
+    console.log("showResultMessageToast");
+    if (success) {
+      this.creationResultMsgTitle = "File created successfully";
+      this.creationResultMsgDescription = "The file was successfully added to the database.";
+    } else {
+      this.creationResultMsgTitle = "File creation failed";
+      this.creationResultMsgDescription = "Server returned " + serverReturn.message;
+    }
+    this.resultToast.toggleToast();
+  }
+
 }
