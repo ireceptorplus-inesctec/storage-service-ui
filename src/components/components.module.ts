@@ -21,7 +21,8 @@ import {ToastSampleIconComponent} from "../app/views/notifications/toasters/toas
   exports: [
     DocsExampleComponent,
     DocsLinkComponent,
-    DocsCalloutComponent
+    DocsCalloutComponent,
+    FilesCreateResultToastComponent
   ],
   imports: [
     CommonModule,
