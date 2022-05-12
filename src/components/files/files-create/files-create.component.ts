@@ -22,10 +22,6 @@ export class FilesCreateComponent implements OnInit {
   metadata: FilesModel = new FilesModel();
   file!: File;
 
-  creationResult!: boolean;
-  creationResultMsgTitle!: String;
-  creationResultMsgDescription!: String;
-
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
 
@@ -68,14 +64,16 @@ export class FilesCreateComponent implements OnInit {
 
   private showResultMessageToast(success: boolean, serverReturn: any) {
     console.log("showResultMessageToast");
+    let creationResultMsgTitle: string;
+    let creationResultMsgDescription: string;
     if (success) {
-      this.creationResultMsgTitle = "File created successfully";
-      this.creationResultMsgDescription = "The file was successfully added to the database.";
+      creationResultMsgTitle = "File created successfully";
+      creationResultMsgDescription = "The file was successfully added to the database.";
     } else {
-      this.creationResultMsgTitle = "File creation failed";
-      this.creationResultMsgDescription = "Server returned " + serverReturn.message;
+      creationResultMsgTitle = "File creation failed";
+      creationResultMsgDescription = "Server returned " + serverReturn.message;
     }
-    this.resultToast.toggleToast();
+    this.resultToast.toggleToast(creationResultMsgTitle, creationResultMsgDescription);
   }
 
 }
