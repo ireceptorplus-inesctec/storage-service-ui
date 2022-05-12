@@ -21,8 +21,11 @@ export class FilesCreateResultToastComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public toggleToast() {
+  public toggleToast(creationResultMsgTitle: string, creationResultMsgDescription: string)
+  {
     this.visible = !this.visible;
+    this.creationResultMsgTitle = creationResultMsgTitle;
+    this.creationResultMsgDescription = creationResultMsgDescription;
   }
 
   onVisibleChange($event: boolean) {
