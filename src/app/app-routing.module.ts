@@ -31,6 +31,11 @@ const routes: Routes = [
           import('./views/files/files.module').then((m) => m.FilesModule)
       },
       {
+        path: 'pipelines',
+        loadChildren: () =>
+          import('./views/pipelines/pipelines.module').then((m) => m.PipelinesModule)
+      },
+      {
         path: 'theme',
         loadChildren: () =>
           import('./views/theme/theme.module').then((m) => m.ThemeModule)
