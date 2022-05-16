@@ -25,6 +25,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-file' }
   },
   {
+    name: 'UMIs',
+    url: '/files/umis',
+    iconComponent: { name: 'cil-file' }
+  },
+  {
     title: true,
     name: 'Pipelines'
   },

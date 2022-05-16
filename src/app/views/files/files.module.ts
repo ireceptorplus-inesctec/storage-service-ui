@@ -24,6 +24,7 @@ import { DatasetsComponent } from './datasets/datasets.component';
 import { IconModule } from '@coreui/icons-angular';
 
 import { FormsModule } from '@angular/forms';
+import { UmisComponent } from './umis/umis.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { FormsModule } from '@angular/forms';
     FilesTableComponent,
     FilesCreateComponent,
     DatasetsComponent,
-    GermlinesComponent
+    GermlinesComponent,
+    UmisComponent
   ]
 })
 export class FilesModule {}
