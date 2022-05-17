@@ -8,7 +8,7 @@ import { DocsExampleComponent } from './docs-example/docs-example.component';
 import { DocsLinkComponent } from './docs-link/docs-link.component';
 import { DocsCalloutComponent } from './docs-callout/docs-callout.component';
 import { FilesCreateResultToastComponent } from './files/files-create-result-toast/files-create-result-toast.component';
-import {ToastSampleIconComponent} from "../app/views/notifications/toasters/toast-simple/toast-sample-icon.component";
+import { ToastSampleIconComponent } from "../app/views/notifications/toasters/toast-simple/toast-sample-icon.component";
 
 @NgModule({
   declarations: [

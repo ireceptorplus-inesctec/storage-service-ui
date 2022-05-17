@@ -5,10 +5,6 @@
         <strong>List of Available Files</strong>
       </c-card-header>
       <c-card-body>
-        <p class="text-medium-emphasis small">
-          Using the most basic table CoreUI, here&#39;s how <code>cTable</code>-based
-          tables look in CoreUI.
-        </p>
         <table cTable>
           <thead>
             <tr>
@@ -28,7 +24,7 @@
                     Default checkbox
                   </label>
                 </div>
-                <i *ngIf="selectable" class="cil-magnifying-glass"></i>
+                <c-icon name="cilMagnifyingGlass" size="2xl"></c-icon>
               </td>
               <th scope="row">{{ file.uuid }}</th>
               <td>{{ file.name }}</td>
