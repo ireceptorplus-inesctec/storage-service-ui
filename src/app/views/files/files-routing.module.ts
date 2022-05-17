@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DatasetsComponent } from './datasets/datasets.component';
 import { GermlinesComponent } from './germlines/germlines.component';
-import {UmisComponent} from "./umis/umis.component";
+import { UmisComponent } from "./umis/umis.component";
+import { FileDetailsComponent } from "../../file-details/file-details.component";
 
 const routes: Routes = [
   {
@@ -34,6 +35,13 @@ const routes: Routes = [
         component: UmisComponent,
         data: {
           title: 'UMIs List',
+        },
+      },
+      {
+        path: 'details',
+        component: FileDetailsComponent,
+        data: {
+          title: 'File details',
         },
       }
     ],
