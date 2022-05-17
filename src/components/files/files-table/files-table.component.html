@@ -12,6 +12,7 @@
         <table cTable>
           <thead>
             <tr>
+              <th scope="col">{{actionName}}</th>
               <th scope="col">UUID</th>
               <th scope="col">Name</th>
               <th scope="col">Description</th>
@@ -20,6 +21,15 @@
           </thead>
           <tbody>
             <tr *ngFor="let file of files">
+              <td>
+                <div *ngIf="selectable" class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Default checkbox
+                  </label>
+                </div>
+                <i *ngIf="selectable" class="cil-magnifying-glass"></i>
+              </td>
               <th scope="row">{{ file.uuid }}</th>
               <td>{{ file.name }}</td>
               <td>{{ file.description }}</td>

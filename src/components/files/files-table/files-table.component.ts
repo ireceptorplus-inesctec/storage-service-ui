@@ -8,6 +8,8 @@ import { FilesModel } from 'src/models/files';
 })
 export class FilesTableComponent {
   @Input() files: FilesModel[] = [];
+  actionName: string = "Details";
+  @Input() selectable: boolean = false;
 
   constructor() { }
 }
