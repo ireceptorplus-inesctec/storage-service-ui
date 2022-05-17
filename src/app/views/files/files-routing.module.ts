@@ -38,7 +38,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'details',
+        path: 'details/:fileId',
         component: FileDetailsComponent,
         data: {
           title: 'File details',

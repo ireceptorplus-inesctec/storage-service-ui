@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-file-details',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileDetailsComponent implements OnInit {
 
-  constructor() { }
+  private routeSub!: Subscription;
+  fileId!: string;
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.fileId = params['fileId'];
+    });
   }
+
+
 
 }
