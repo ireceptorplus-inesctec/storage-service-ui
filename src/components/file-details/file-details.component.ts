@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FilesModel } from "../../models/files";
 
 @Component({
-  selector: 'app-file-details',
+  selector: 'file-details',
   templateUrl: './file-details.component.html',
   styleUrls: ['./file-details.component.scss']
 })
