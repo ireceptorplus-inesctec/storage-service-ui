@@ -18,7 +18,17 @@
       <button (click)="toggleModalFile()" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>
-
+      <c-card class="mb-4">
+        <c-card-body>
+          <h3>{{file?.name}}</h3>
+          <p class="text-medium-emphasis small">
+            {{file?.description}}
+          </p>
+          <p class="text-medium-emphasis small">
+            Creation date: {{file?.creationDate}}
+          </p>
+        </c-card-body>
+      </c-card>
     </c-modal-body>
     <c-modal-footer>
       <button (click)="toggleModalFile()" cButton color="secondary">

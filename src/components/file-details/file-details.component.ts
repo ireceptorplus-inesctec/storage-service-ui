@@ -7,10 +7,7 @@ import { FilesModel } from "../../models/files";
   styleUrls: ['./file-details.component.scss']
 })
 export class FileDetailsComponent implements OnInit {
-
-
   @Input() file!: FilesModel;
-
 
   public modalFileOpen = false;
 

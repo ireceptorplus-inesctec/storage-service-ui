@@ -24,8 +24,10 @@
                     Default checkbox
                   </label>
                 </div>
-                    <c-icon *ngIf="!selectable" name="cilMagnifyingGlass" size="2xl" (click)="openFileDetails(file)"></c-icon>
-
+                <button cButton class="primary" variant="ghost" (click)="openFileDetails(file)">
+                  <c-icon *ngIf="!selectable" name="cilMagnifyingGlass" size="2xl"
+                          ></c-icon>
+                </button>
               </td>
               <th scope="row">{{ file.uuid }}</th>
               <td>{{ file.name }}</td>
