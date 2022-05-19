@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FilesModel } from 'src/models/files';
 
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../app/icons/icon-subset';
+import { FileDetailsComponent } from "../../file-details/file-details.component";
 
 @Component({
   selector: 'files-table',
@@ -15,7 +16,15 @@ export class FilesTableComponent {
   actionName: string = "Details";
   @Input() selectable: boolean = false;
 
+  @ViewChild(FileDetailsComponent) fileDetailsComponent!: FileDetailsComponent;
+  fileToViewDetails!: FilesModel;
+
   constructor( public iconSetService: IconSetService ) {
     iconSetService.icons = { ...iconSubset };
+  }
+
+  openFileDetails(file: FilesModel)
+  {
+    this.fileToViewDetails = file;
   }
 }
