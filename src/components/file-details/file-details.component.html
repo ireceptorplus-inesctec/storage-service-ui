@@ -1,43 +1,31 @@
-<c-row>
-  <c-col xs="12">
+<c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
+  <c-modal-header>
+    <h5 cModalTitle>File details</h5>
+    <button (click)="toggleModalFile()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
     <c-card class="mb-4">
       <c-card-body>
-        <ng-container *ngTemplateOutlet="filesCreate"></ng-container>
+        <h3>{{file?.name}}</h3>
+        <p class="text-medium-emphasis small">
+          {{file?.description}}
+        </p>
+        <p class="text-medium-emphasis small">
+          Creation date: {{file?.creationDate}}
+        </p>
+
+        <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
+          <c-icon name="cil-cloud-download" size="2xl"
+          ></c-icon>
+          Download</a>
       </c-card-body>
     </c-card>
-  </c-col>
-</c-row>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleModalFile()" cButton color="secondary">
+      Close
+    </button>
+  </c-modal-footer>
+</c-modal>
 
-<ng-template #filesCreate>
-  <c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
-    <c-modal-header>
-      <h5 cModalTitle>File details</h5>
-      <button (click)="toggleModalFile()" cButtonClose></button>
-    </c-modal-header>
-    <c-modal-body>
-      <c-card class="mb-4">
-        <c-card-body>
-          <h3>{{file?.name}}</h3>
-          <p class="text-medium-emphasis small">
-            {{file?.description}}
-          </p>
-          <p class="text-medium-emphasis small">
-            Creation date: {{file?.creationDate}}
-          </p>
-
-          <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
-            <c-icon name="cil-cloud-download" size="2xl"
-            ></c-icon>
-            Download</a>
-        </c-card-body>
-      </c-card>
-    </c-modal-body>
-    <c-modal-footer>
-      <button (click)="toggleModalFile()" cButton color="secondary">
-        Close
-      </button>
-    </c-modal-footer>
-  </c-modal>
-
-  <files-create-result-toast></files-create-result-toast>
-</ng-template>
+<files-create-result-toast></files-create-result-toast>
