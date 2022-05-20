@@ -1,20 +1,7 @@
-<c-row>
-  <c-col xs="12">
-    <c-card class="mb-4">
-      <c-card-body>
-        <ng-container *ngTemplateOutlet="filesCreate"></ng-container>
-      </c-card-body>
-    </c-card>
-  </c-col>
-</c-row>
-
 <ng-template #filesCreate>
-  <button (click)="toggleModalFile()" cButton color="dark">
-    Add File
-  </button>
-  <c-modal id="filesCreateModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
+  <c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
     <c-modal-header>
-      <h5 cModalTitle>Add a new file</h5>
+      <h5 cModalTitle>File details</h5>
       <button (click)="toggleModalFile()" cButtonClose></button>
     </c-modal-header>
     <c-modal-body>
