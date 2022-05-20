@@ -1,3 +1,13 @@
+<c-row>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-body>
+        <ng-container *ngTemplateOutlet="filesCreate"></ng-container>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
 <ng-template #filesCreate>
   <c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
     <c-modal-header>
@@ -14,6 +24,7 @@
           <p class="text-medium-emphasis small">
             Creation date: {{file?.creationDate}}
           </p>
+
           <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
             <c-icon name="cil-cloud-download" size="2xl"
             ></c-icon>
@@ -28,5 +39,5 @@
     </c-modal-footer>
   </c-modal>
 
-  <app-files-create-result-toast></app-files-create-result-toast>
+  <files-create-result-toast></files-create-result-toast>
 </ng-template>

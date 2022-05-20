@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 
 @Component({
-  selector: 'app-files-create-result-toast',
+  selector: 'files-create-result-toast',
   templateUrl: './files-create-result-toast.component.html',
   styleUrls: ['./files-create-result-toast.component.scss']
 })
