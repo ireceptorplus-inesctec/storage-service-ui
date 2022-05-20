@@ -27,6 +27,10 @@
           <p class="text-medium-emphasis small">
             Creation date: {{file?.creationDate}}
           </p>
+          <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
+            <c-icon name="cil-cloud-download" size="2xl"
+            ></c-icon>
+            Download</a>
         </c-card-body>
       </c-card>
     </c-modal-body>
