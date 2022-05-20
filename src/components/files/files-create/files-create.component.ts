@@ -56,6 +56,7 @@ export class FilesCreateComponent implements OnInit {
     this.fileService.createFile(metadata, this.file).then(serverReturn => {
         let datasetModel: FilesModel = serverReturn;
         this.showResultMessageToast(true, serverReturn);
+        this.toggleModalFile();
       },
       serverReturn => {
         this.showResultMessageToast(false, serverReturn);
