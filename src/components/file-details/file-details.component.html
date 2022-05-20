@@ -1,4 +1,4 @@
-<c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)">
+<c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)" [fullscreen]="true">
   <c-modal-header>
     <h5 cModalTitle>File details</h5>
     <button (click)="toggleModalFile()" cButtonClose></button>
