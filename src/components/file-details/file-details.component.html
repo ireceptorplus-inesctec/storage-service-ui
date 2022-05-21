@@ -13,11 +13,16 @@
         <p class="text-medium-emphasis small">
           Creation date: {{file?.creationDate}}
         </p>
-
-        <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
-          <c-icon name="cil-cloud-download" size="2xl"
-          ></c-icon>
-          Download</a>
+        <div>
+          <label for="filePreviewTextArea" class="form-label">File preview</label>
+          <textarea class="form-control" id="filePreviewTextArea" rows="3" readonly>{{filePreview}}</textarea>
+        </div>
+        <div>
+          <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{file?.uuid}}">
+            <c-icon name="cil-cloud-download" size="2xl"
+            ></c-icon>
+            Download</a>
+        </div>
       </c-card-body>
     </c-card>
   </c-modal-body>

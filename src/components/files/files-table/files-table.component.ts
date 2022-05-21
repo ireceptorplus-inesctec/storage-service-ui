@@ -27,6 +27,7 @@ export class FilesTableComponent {
   {
     console.log("opening modal")
     this.fileToViewDetails = file;
+    this.fileDetailsComponent.initModal();
     this.fileDetailsComponent.toggleModalFile();
   }
 }
