@@ -1,15 +1,15 @@
 import { environment } from "../../environments/environment";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
+import {HttpClientService} from "./http-client-service";
 
-export class FileCreateService<T> {
+export class FileCreateService<T> extends HttpClientService<T>{
 
-  baseApiUrl: string = environment.apiUrl;
-
-  constructor(protected endpointName: string, protected httpClient: HttpClient) {
+  constructor(protected httpClient: HttpClient) {
+      super();
   }
 
-  createFile(elem: T, file: File): Observable<any> {
+  createFileWithProgressMonitoring(elem: T, file: File): Observable<any> {
     const elemStr = JSON.stringify(elem);
     var formData: any = new FormData();
     formData.append('metadata', elemStr);
