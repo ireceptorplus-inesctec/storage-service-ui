@@ -9,6 +9,11 @@ export class FileCreateService<T> extends HttpClientService<T>{
       super();
   }
 
+  public setEndpointName(endpointName: string)
+  {
+    this.endpointName = endpointName;
+  }
+
   createFileWithProgressMonitoring(elem: T, file: File): Observable<any> {
     const elemStr = JSON.stringify(elem);
     var formData: any = new FormData();
