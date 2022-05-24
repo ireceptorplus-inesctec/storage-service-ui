@@ -2,7 +2,7 @@ import { environment } from "../../environments/environment";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 
-export class FileCreationService<T> {
+export class FileCreateService<T> {
 
   baseApiUrl: string = environment.apiUrl;
 
