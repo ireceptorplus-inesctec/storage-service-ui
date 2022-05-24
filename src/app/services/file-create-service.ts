@@ -6,11 +6,10 @@ import {HttpClientService} from "./http-client-service";
 export class FileCreateService<T> extends HttpClientService<T>{
 
   constructor(protected httpClient: HttpClient) {
-      super();
+    super();
   }
 
-  public setEndpointName(endpointName: string)
-  {
+  public setEndpointName(endpointName: string) {
     this.endpointName = endpointName;
   }
 
