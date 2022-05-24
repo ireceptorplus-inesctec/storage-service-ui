@@ -8,7 +8,7 @@ import { HttpClientService } from "../../app/services/http-client-service";
   templateUrl: './file-details.component.html',
   styleUrls: ['./file-details.component.scss']
 })
-export class FileDetailsComponent implements OnInit {
+export class FileDetailsComponent {
   numberOfLinesToPreview: number = 5;
 
   @Input() file!: FilesModel;
@@ -22,10 +22,6 @@ export class FileDetailsComponent implements OnInit {
 
   toggleModalFile() {
     this.modalFileOpen = !this.modalFileOpen;
-  }
-
-  ngOnInit() {
-    this.getFilePreviewFromServer();
   }
 
   public initModal() {

@@ -17,7 +17,6 @@ export class FilesTableComponent {
   @Input() selectable: boolean = false;
 
   @ViewChild(FileDetailsComponent) fileDetailsComponent!: FileDetailsComponent;
-  fileToViewDetails!: FilesModel;
 
   constructor( public iconSetService: IconSetService ) {
     iconSetService.icons = { ...iconSubset };
@@ -26,7 +25,7 @@ export class FilesTableComponent {
   openFileDetails(file: FilesModel)
   {
     console.log("opening modal")
-    this.fileToViewDetails = file;
+    this.fileDetailsComponent.file = file;
     this.fileDetailsComponent.initModal();
     this.fileDetailsComponent.toggleModalFile();
   }
