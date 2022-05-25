@@ -5,7 +5,8 @@ import { FileCreateData } from "./file-create-data";
 import { HttpClientService } from "../../../app/services/http-client-service";
 import { FilesCreateResultToastComponent } from "../files-create-result-toast/files-create-result-toast.component";
 import { FileCreateService } from "../../../app/services/file-create-service";
-import { HttpEvent, HttpEventType } from "@angular/common/http";
+import {HttpErrorResponse, HttpEvent, HttpEventType} from "@angular/common/http";
+import {throwError} from "rxjs";
 
 @Component({
   selector: 'files-create',
@@ -55,34 +56,6 @@ export class FilesCreateComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-  submit() {
-    const metadata = new FilesModel();
-    metadata.name = this.fileCreateForm.get('name')?.value;
-    metadata.description = this.fileCreateForm.get('description')?.value;
-    this.fileService.createFile(metadata, this.file).then(serverReturn => {
-        let datasetModel: FilesModel = serverReturn;
-        this.showResultMessageToast(true, serverReturn);
-        this.toggleModalFile();
-      },
-      serverReturn => {
-        this.showResultMessageToast(false, serverReturn);
-      });
-  }
-
-  private showResultMessageToast(success: boolean, serverReturn: any) {
-    console.log("showResultMessageToast");
-    let creationResultMsgTitle: string;
-    let creationResultMsgDescription: string;
-    if (success) {
-      creationResultMsgTitle = "File created successfully";
-      creationResultMsgDescription = "The file was successfully added to the database.";
-    } else {
-      creationResultMsgTitle = "File creation failed";
-      creationResultMsgDescription = "Server returned " + serverReturn.message;
-    }
-    this.resultToast.toggleToast(creationResultMsgTitle, creationResultMsgDescription);
-  }
-
   submitFile() {
     this.fileCreateService.setEndpointName(this.fileService.getEndpointName());
     const metadata = new FilesModel();
@@ -90,7 +63,8 @@ export class FilesCreateComponent implements OnInit {
     metadata.description = this.fileCreateForm.get('description')?.value;
     this.fileCreateService.createFileWithProgressMonitoring(
       metadata,
-      this.file
+      this.file,
+      this.handleError
     ).subscribe((event: HttpEvent<any>) => {
 
       switch (event.type) {
@@ -106,12 +80,28 @@ export class FilesCreateComponent implements OnInit {
           console.log(`Uploaded! ${this.progress}%`);
           break;
         case HttpEventType.Response:
-          console.log('Image Upload Successfully!', event.body);
           let datasetModel: FilesModel = event.body;
-          this.showResultMessageToast(true, event.body);
+          this.resultToast.toggleToast("File created successfully",
+            "The file was successfully added to the database.");
+          console.log('File Uploaded Successfully!', event.body);
           this.toggleModalFile();
       }
     })
+  }
+
+  handleError(error: HttpErrorResponse) {
+    let creationResultMsgTitle: string;
+    let creationResultMsgDescription: string;
+    if (error.error instanceof ErrorEvent) {
+      creationResultMsgTitle = "File creation failed";
+      creationResultMsgDescription = "Client-side error: " + error.error.message;
+    } else {
+      creationResultMsgTitle = "File creation failed";
+      creationResultMsgDescription = "Server-side error: " + `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    this.resultToast.toggleToast(creationResultMsgTitle, creationResultMsgDescription);
+
+    this.toggleModalFile();
   }
 
 }

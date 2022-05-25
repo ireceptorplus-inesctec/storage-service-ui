@@ -15,7 +15,7 @@ export class FileCreateService<T> extends HttpClientService<T>{
     this.endpointName = endpointName;
   }
 
-  createFileWithProgressMonitoring(elem: T, file: File): Observable<any> {
+  createFileWithProgressMonitoring(elem: T, file: File, handleErrorFunction: (error: HttpErrorResponse) => any): Observable<any> {
     const elemStr = JSON.stringify(elem);
     var formData: any = new FormData();
     formData.append('metadata', elemStr);
@@ -25,21 +25,6 @@ export class FileCreateService<T> extends HttpClientService<T>{
         reportProgress: true,
         observe: 'events',
       })
-      .pipe(catchError(this.errorMgmt));
-  }
-
-  errorMgmt(error: HttpErrorResponse) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(() => {
-      return errorMessage;
-    });
+      .pipe(catchError(handleErrorFunction));
   }
 }
