@@ -45,6 +45,9 @@ export class FilesCreateComponent implements OnInit {
   }
 
   toggleModalFile() {
+    if (!this.modalFileOpen)
+      this.initModal();
+
     this.modalFileOpen = !this.modalFileOpen;
   }
 
@@ -54,6 +57,10 @@ export class FilesCreateComponent implements OnInit {
 
   onFileChange(event: any) {
     this.file = event.target.files[0];
+  }
+
+  initModal() {
+    this.progress = "0";
   }
 
   submitFile() {
