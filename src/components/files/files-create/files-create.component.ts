@@ -69,8 +69,6 @@ export class FilesCreateComponent implements OnInit {
       });
   }
 
-
-
   private showResultMessageToast(success: boolean, serverReturn: any) {
     console.log("showResultMessageToast");
     let creationResultMsgTitle: string;
@@ -112,7 +110,6 @@ export class FilesCreateComponent implements OnInit {
           let datasetModel: FilesModel = event.body;
           this.showResultMessageToast(true, event.body);
           this.toggleModalFile();
-
       }
     })
   }
