@@ -109,9 +109,9 @@ export class FilesCreateComponent implements OnInit {
           break;
         case HttpEventType.Response:
           console.log('Image Upload Successfully!', event.body);
-          setTimeout(() => {
-            this.progress = "0";
-          }, 1500);
+          let datasetModel: FilesModel = event.body;
+          this.showResultMessageToast(true, event.body);
+          this.toggleModalFile();
 
       }
     })
