@@ -53,4 +53,8 @@ export class HttpClientService<T> {
   public getById(id: string): Promise<T> {
     return this.request(this.getFileTypeApiUrl() + `/${id}`);
   }
+
+  public getEndpointName(): string {
+    return <string>this.endpointName;
+  }
 }
