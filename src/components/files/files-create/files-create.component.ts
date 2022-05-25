@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateData } from "./file-create-data";
 import { HttpClientService } from "../../../app/services/http-client-service";
 import { FilesCreateResultToastComponent } from "../files-create-result-toast/files-create-result-toast.component";
+import { FileCreateService } from "../../../app/services/file-create-service";
+import { HttpEvent, HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: 'files-create',
@@ -17,10 +19,13 @@ export class FilesCreateComponent implements OnInit {
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
   @Input() fileService!: HttpClientService<FilesModel>;
+  fileCreateService!: FileCreateService<FilesModel>;
 
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
   file!: File;
+
+  progress!: number;
 
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
@@ -32,6 +37,7 @@ export class FilesCreateComponent implements OnInit {
   });
 
   constructor() {
+
   }
 
   ngOnInit(): void {
@@ -63,6 +69,8 @@ export class FilesCreateComponent implements OnInit {
       });
   }
 
+
+
   private showResultMessageToast(success: boolean, serverReturn: any) {
     console.log("showResultMessageToast");
     let creationResultMsgTitle: string;
@@ -75,6 +83,38 @@ export class FilesCreateComponent implements OnInit {
       creationResultMsgDescription = "Server returned " + serverReturn.message;
     }
     this.resultToast.toggleToast(creationResultMsgTitle, creationResultMsgDescription);
+  }
+
+  submitFile() {
+    this.fileCreateService.setEndpointName(this.fileService.getEndpointName());
+    const metadata = new FilesModel();
+    metadata.name = this.fileCreateForm.get('name')?.value;
+    metadata.description = this.fileCreateForm.get('description')?.value;
+    this.fileCreateService.createFileWithProgressMonitoring(
+      metadata,
+      this.file
+    ).subscribe((event: HttpEvent<any>) => {
+
+      switch (event.type) {
+        case HttpEventType.Sent:
+          console.log('Request has been made!');
+          break;
+        case HttpEventType.ResponseHeader:
+          console.log('Response header has been received!');
+          break;
+        case HttpEventType.UploadProgress:
+          var eventTotal = event.total ? event.total : 0;
+          this.progress = Math.round(event.loaded / eventTotal * 100);
+          console.log(`Uploaded! ${this.progress}%`);
+          break;
+        case HttpEventType.Response:
+          console.log('Image Upload Successfully!', event.body);
+          setTimeout(() => {
+            this.progress = 0;
+          }, 1500);
+
+      }
+    })
   }
 
 }
