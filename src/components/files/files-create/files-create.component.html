@@ -32,6 +32,9 @@
                     <input cFormControl name="file" id="file" multiple type="file" formControlName="file" (change)="onFileChange($event)" />
                 </div>
             </form>
+          <c-progress class="mb-3">
+            <c-progress-bar [value]=progress></c-progress-bar>
+          </c-progress>
         </c-modal-body>
         <c-modal-footer>
             <button (click)="toggleModalFile()" cButton color="secondary">

@@ -8,7 +8,7 @@ import {
   CardModule,
   FormModule,
   GridModule,
-  ModalModule,
+  ModalModule, ProgressModule,
   TableModule,
 } from '@coreui/angular';
 
@@ -45,7 +45,8 @@ import { FileDetailsComponent } from "../../../components/file-details/file-deta
     FormModule,
 
     ModalModule,
-    IconModule
+    IconModule,
+    ProgressModule
   ],
   declarations: [
     FilesTableComponent,

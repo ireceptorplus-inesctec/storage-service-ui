@@ -25,7 +25,7 @@ export class FilesCreateComponent implements OnInit {
   metadata: FilesModel = new FilesModel();
   file!: File;
 
-  progress!: number;
+  progress!: string;
 
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
@@ -104,13 +104,13 @@ export class FilesCreateComponent implements OnInit {
           break;
         case HttpEventType.UploadProgress:
           var eventTotal = event.total ? event.total : 0;
-          this.progress = Math.round(event.loaded / eventTotal * 100);
+          this.progress = Math.round(event.loaded / eventTotal * 100).toString();
           console.log(`Uploaded! ${this.progress}%`);
           break;
         case HttpEventType.Response:
           console.log('Image Upload Successfully!', event.body);
           setTimeout(() => {
-            this.progress = 0;
+            this.progress = "0";
           }, 1500);
 
       }
