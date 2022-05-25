@@ -2,7 +2,9 @@ import { environment } from "../../environments/environment";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import {HttpClientService} from "./http-client-service";
+import {Injectable} from "@angular/core";
 
+@Injectable()
 export class FileCreateService<T> extends HttpClientService<T>{
 
   constructor(protected httpClient: HttpClient) {
@@ -19,7 +21,7 @@ export class FileCreateService<T> extends HttpClientService<T>{
     formData.append('metadata', elemStr);
     formData.append('file', file, file.name);
     return this.httpClient
-      .post('http://localhost:4000/api/create-user', formData, {
+      .post(this.getFileTypeApiUrl(), formData, {
         reportProgress: true,
         observe: 'events',
       })

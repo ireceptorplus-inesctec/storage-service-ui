@@ -26,6 +26,8 @@ import { IconModule } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
 import { UmisComponent } from './umis/umis.component';
 import { FileDetailsComponent } from "../../../components/file-details/file-details.component";
+import {FileCreateService} from "../../services/file-create-service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -46,7 +48,8 @@ import { FileDetailsComponent } from "../../../components/file-details/file-deta
 
     ModalModule,
     IconModule,
-    ProgressModule
+    ProgressModule,
+    HttpClientModule
   ],
   declarations: [
     FilesTableComponent,
@@ -55,6 +58,10 @@ import { FileDetailsComponent } from "../../../components/file-details/file-deta
     GermlinesComponent,
     UmisComponent,
     FileDetailsComponent
+  ],
+  providers: [
+    FileCreateService
+
   ]
 })
 export class FilesModule {}

@@ -19,7 +19,7 @@ export class FilesCreateComponent implements OnInit {
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
   @Input() fileService!: HttpClientService<FilesModel>;
-  fileCreateService!: FileCreateService<FilesModel>;
+
 
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
@@ -36,7 +36,7 @@ export class FilesCreateComponent implements OnInit {
     file: new FormControl('', []),
   });
 
-  constructor() {
+  constructor(protected fileCreateService: FileCreateService<FilesModel>) {
 
   }
 
