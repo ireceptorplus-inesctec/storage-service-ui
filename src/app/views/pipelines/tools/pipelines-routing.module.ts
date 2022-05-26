@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ToolsComponent } from "./tools.component";
+import {RunPipelineComponent} from "../run-pipeline/run-pipeline.component";
 
 const routes: Routes = [
   {
@@ -18,7 +19,14 @@ const routes: Routes = [
         component: ToolsComponent,
         data: {
           title: 'Datasets List',
-        },
+        }
+      },
+      {
+        path: 'run',
+        component: RunPipelineComponent,
+        data: {
+          title: 'Run pipeline',
+        }
       }
     ],
   },
