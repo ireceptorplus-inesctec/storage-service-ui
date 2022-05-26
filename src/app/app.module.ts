@@ -44,8 +44,6 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { ToolsComponent } from './views/pipelines/tools/tools.component';
-import { CreatePipelineComponent } from './views/pipelines/run-pipeline/create-pipeline.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -58,7 +56,7 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, ...APP_CONTAINERS, CreatePipelineComponent],
+    declarations: [AppComponent, ...APP_CONTAINERS],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

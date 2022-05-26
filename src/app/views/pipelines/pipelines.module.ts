@@ -19,6 +19,7 @@ import { IconModule } from '@coreui/icons-angular';
 
 import { FormsModule } from '@angular/forms';
 import { ToolsComponent } from "./tools/tools.component";
+import {CreatePipelineComponent} from "./run-pipeline/create-pipeline.component";
 
 @NgModule({
   imports: [
@@ -39,10 +40,13 @@ import { ToolsComponent } from "./tools/tools.component";
 
     IconModule,
     CardModule,
-    CalloutModule
+    CalloutModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     ToolsComponent,
+    CreatePipelineComponent
   ]
 })
 export class PipelinesModule {}
