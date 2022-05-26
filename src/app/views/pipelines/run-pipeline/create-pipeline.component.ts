@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {FileCreateData} from "../../../../components/files/files-create/file-create-data";
-import {HttpClientService} from "../../../services/http-client-service";
-import {FilesModel} from "../../../../models/files";
-import {FilesCreateResultToastComponent} from "../../../../components/files/files-create-result-toast/files-create-result-toast.component";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FileCreateService} from "../../../services/file-create-service";
-import {HttpErrorResponse, HttpEvent, HttpEventType} from "@angular/common/http";
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { FileCreateData } from "../../../../components/files/files-create/file-create-data";
+import { HttpClientService } from "../../../services/http-client-service";
+import { FilesModel } from "../../../../models/files";
+import { FilesCreateResultToastComponent } from "../../../../components/files/files-create-result-toast/files-create-result-toast.component";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FileCreateService } from "../../../services/file-create-service";
+import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
 
 @Component({
   selector: 'app-run-pipeline',
