@@ -20,6 +20,8 @@ import { IconModule } from '@coreui/icons-angular';
 import { FormsModule } from '@angular/forms';
 import { ToolsComponent } from "./tools/tools.component";
 import {CreatePipelineComponent} from "./run-pipeline/create-pipeline.component";
+import {FileCreateService} from "../../services/file-create-service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   imports: [
@@ -42,11 +44,15 @@ import {CreatePipelineComponent} from "./run-pipeline/create-pipeline.component"
     CardModule,
     CalloutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     ToolsComponent,
     CreatePipelineComponent
+  ],
+  providers: [
+    FileCreateService
   ]
 })
 export class PipelinesModule {}
