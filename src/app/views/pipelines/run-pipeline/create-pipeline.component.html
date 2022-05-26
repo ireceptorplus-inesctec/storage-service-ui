@@ -7,8 +7,16 @@
       <c-card-body>
         <form cForm [formGroup]="pipelineCreateForm">
           <div class="mb-3 form-group">
-            <label cLabel for="name">Name</label>
-            <input cFormControl name="name" id="name" type="text" formControlName="name"/>
+            <label cLabel for="inputDatasetList">Input datasets</label>
+            <ul class="list-group" id="inputDatasetList">
+              <li class="list-group-item" *ngFor="let file of inputDatasets">file.uuid</li>
+            </ul>
+            <label cLabel for="outputDatasetList">Output datasets</label>
+            <ul class="list-group" id="outputDatasetList">
+              <li class="list-group-item" *ngFor="let file of outputDatasets">file.uuid</li>
+            </ul>
+            <button cButton class="primary" variant="ghost" (click)="openFilePickingModal()">
+            </button>
           </div>
           <div class="mb-3 form-group">
             <label cLabel for="description">Description</label>
