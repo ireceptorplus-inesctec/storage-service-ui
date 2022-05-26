@@ -5,7 +5,7 @@ import {HttpClientService} from "./http-client-service";
 import {Injectable} from "@angular/core";
 
 @Injectable()
-export class FileCreateService<T> extends HttpClientService<T>{
+export class FileCreateService<T> extends HttpClientService<T> {
 
   constructor(protected httpClient: HttpClient) {
     super();
