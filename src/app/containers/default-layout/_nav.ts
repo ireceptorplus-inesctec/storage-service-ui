@@ -39,8 +39,8 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-input-power' }
   },
   {
-    name: 'Run',
-    url: '/pipelines/run',
+    name: 'Create',
+    url: '/pipelines/create',
     iconComponent: { name: 'cil-input-power' }
   },
   {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ToolsComponent } from "./tools.component";
-import {RunPipelineComponent} from "../run-pipeline/run-pipeline.component";
+import {CreatePipelineComponent} from "../run-pipeline/create-pipeline.component";
 
 const routes: Routes = [
   {
@@ -22,8 +22,8 @@ const routes: Routes = [
         }
       },
       {
-        path: 'run',
-        component: RunPipelineComponent,
+        path: 'create',
+        component: CreatePipelineComponent,
         data: {
           title: 'Run pipeline',
         }

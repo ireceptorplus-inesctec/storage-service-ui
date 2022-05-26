@@ -1,0 +1,26 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>List of Available Files</strong>
+      </c-card-header>
+      <c-card-body>
+        <form cForm [formGroup]="pipelineCreateForm">
+          <div class="mb-3 form-group">
+            <label cLabel for="name">Name</label>
+            <input cFormControl name="name" id="name" type="text" formControlName="name"/>
+          </div>
+          <div class="mb-3 form-group">
+            <label cLabel for="description">Description</label>
+            <input cFormControl name="description" id="description" type="text" formControlName="description"/>
+          </div>
+          <div class="mb-3 form-group">
+            <label cLabel for="file">Select files to upload</label>
+            <input cFormControl name="file" id="file" multiple type="file" formControlName="file"
+                   (change)="onFileChange($event)"/>
+          </div>
+        </form>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
