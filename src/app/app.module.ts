@@ -44,7 +44,7 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { FileSelectionComponent } from './file-selection/file-selection.component';
+import { FileSelectionComponent } from '../components/file-selection/file-selection.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
