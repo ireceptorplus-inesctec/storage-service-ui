@@ -48,7 +48,8 @@ import {FilesTableComponent} from "../../../components/files/files-table/files-t
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    ModalModule
+    ModalModule,
+    FilesTableComponent
   ],
   declarations: [
     ToolsComponent,
