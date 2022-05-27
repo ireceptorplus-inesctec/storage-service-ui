@@ -30,38 +30,41 @@ import {FileCreateService} from "../../services/file-create-service";
 import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
-  imports: [
-    FormsModule,
+    imports: [
+        FormsModule,
 
-    FilesRoutingModule,
-    CommonModule,
-    ReactiveFormsModule,
-    ComponentsModule,
+        FilesRoutingModule,
+        CommonModule,
+        ReactiveFormsModule,
+        ComponentsModule,
 
-    GridModule,
-    CardModule,
-    TableModule,
+        GridModule,
+        CardModule,
+        TableModule,
 
-    ButtonModule,
-    ButtonGroupModule,
-    FormModule,
+        ButtonModule,
+        ButtonGroupModule,
+        FormModule,
 
-    ModalModule,
-    IconModule,
-    ProgressModule,
-    HttpClientModule
-  ],
-  declarations: [
-    FilesTableComponent,
-    FilesCreateComponent,
-    DatasetsComponent,
-    GermlinesComponent,
-    UmisComponent,
-    FileDetailsComponent
-  ],
-  providers: [
-    FileCreateService
+        ModalModule,
+        IconModule,
+        ProgressModule,
+        HttpClientModule
+    ],
+    declarations: [
+        FilesTableComponent,
+        FilesCreateComponent,
+        DatasetsComponent,
+        GermlinesComponent,
+        UmisComponent,
+        FileDetailsComponent
+    ],
+    exports: [
+        FilesTableComponent
+    ],
+    providers: [
+        FileCreateService
 
-  ]
+    ]
 })
 export class FilesModule {}

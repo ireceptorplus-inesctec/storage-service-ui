@@ -34,7 +34,7 @@ import {
   FormModule,
   GridModule,
   HeaderModule,
-  ListGroupModule,
+  ListGroupModule, ModalModule,
   NavModule,
   ProgressModule,
   SharedModule,
@@ -44,7 +44,8 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { FileSelectionComponent } from '../components/file-selection/file-selection.component';
+import { FileSelectionComponent } from '../components/pipelines/file-selection/file-selection.component';
+import {FilesModule} from "./views/files/files.module";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -57,47 +58,51 @@ const APP_CONTAINERS = [
 ];
 
 @NgModule({
-    declarations: [AppComponent, ...APP_CONTAINERS, FileSelectionComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        AvatarModule,
-        BreadcrumbModule,
-        FooterModule,
-        DropdownModule,
-        GridModule,
-        HeaderModule,
-        SidebarModule,
-        IconModule,
-        PerfectScrollbarModule,
-        NavModule,
-        ButtonModule,
-        FormModule,
-        UtilitiesModule,
-        ButtonGroupModule,
-        SidebarModule,
-        SharedModule,
-        TabsModule,
-        ListGroupModule,
-        ProgressModule,
-        BadgeModule,
-        ListGroupModule,
-        CardModule
-    ],
-    providers: [
-        {
-            provide: LocationStrategy,
-            useClass: HashLocationStrategy,
-        },
-        {
-            provide: PERFECT_SCROLLBAR_CONFIG,
-            useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
-        },
-        IconSetService,
-        Title
-    ],
-    bootstrap: [AppComponent],
+  declarations: [AppComponent, ...APP_CONTAINERS],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    AvatarModule,
+    BreadcrumbModule,
+    FooterModule,
+    DropdownModule,
+    GridModule,
+    HeaderModule,
+    SidebarModule,
+    IconModule,
+    PerfectScrollbarModule,
+    NavModule,
+    ButtonModule,
+    FormModule,
+    UtilitiesModule,
+    ButtonGroupModule,
+    SidebarModule,
+    SharedModule,
+    TabsModule,
+    ListGroupModule,
+    ProgressModule,
+    BadgeModule,
+    ListGroupModule,
+    CardModule,
+    FilesModule,
+    ModalModule
+  ],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy,
+    },
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+    IconSetService,
+    Title
+  ],
+  bootstrap: [AppComponent],
+  exports: [
+  ]
 })
 export class AppModule {
 }

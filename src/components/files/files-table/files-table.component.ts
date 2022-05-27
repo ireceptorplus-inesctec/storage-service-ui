@@ -9,7 +9,7 @@ import { FileDetailsComponent } from "../../file-details/file-details.component"
   selector: 'files-table',
   templateUrl: './files-table.component.html',
   styleUrls: ['./files-table.component.scss'],
-  providers: [ IconSetService ]
+  providers: [ IconSetService ],
 })
 export class FilesTableComponent {
   @Input() files: FilesModel[] = [];

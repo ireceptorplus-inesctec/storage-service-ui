@@ -15,6 +15,7 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'datasets',
+        pathMatch: 'full'
       },
       {
         path: 'datasets',

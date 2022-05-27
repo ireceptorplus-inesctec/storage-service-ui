@@ -7,7 +7,7 @@ import {
   ButtonModule, CalloutModule,
   CardModule,
   FormModule,
-  GridModule,
+  GridModule, ModalModule,
   TableModule,
 } from '@coreui/angular';
 
@@ -22,6 +22,8 @@ import { ToolsComponent } from "./tools/tools.component";
 import {CreatePipelineComponent} from "./run-pipeline/create-pipeline.component";
 import {FileCreateService} from "../../services/file-create-service";
 import {HttpClientModule} from "@angular/common/http";
+import {FileSelectionComponent} from "../../../components/pipelines/file-selection/file-selection.component";
+import {FilesTableComponent} from "../../../components/files/files-table/files-table.component";
 
 @NgModule({
   imports: [
@@ -45,11 +47,13 @@ import {HttpClientModule} from "@angular/common/http";
     CalloutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule
   ],
   declarations: [
     ToolsComponent,
-    CreatePipelineComponent
+    CreatePipelineComponent,
+    FileSelectionComponent
   ],
   providers: [
     FileCreateService
