@@ -8,13 +8,13 @@
         <form cForm [formGroup]="pipelineCreateForm">
           <div class="mb-3 form-group">
             <div class="input-datasets-div">
-            <label cLabel for="inputDatasetList">Input datasets</label>
-            <ul class="list-group" id="inputDatasetList">
-              <li class="list-group-item" *ngFor="let file of inputDatasets">file.uuid</li>
-            </ul>
-            <button cButton class="primary" (click)="openFilePickingModal()">
-              Select input datasets
-            </button>
+              <label cLabel for="inputDatasetList">Input datasets</label>
+              <ul class="list-group" id="inputDatasetList">
+                <li class="list-group-item" *ngFor="let file of inputDatasets">file.uuid</li>
+              </ul>
+              <button cButton class="primary" (click)="openFilePickingModal()">
+                Select input datasets
+              </button>
             </div>
           </div>
           <div class="mb-3 form-group">
