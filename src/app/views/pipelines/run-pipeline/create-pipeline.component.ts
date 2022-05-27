@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateService } from "../../../services/file-create-service";
 import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
 import {FileSelectionComponent} from "../../../../components/pipelines/file-selection/file-selection.component";
+import {DatasetService} from "../../../services/dataset-service";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -20,8 +21,9 @@ export class CreatePipelineComponent implements OnInit {
    */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
-  @Input() fileService!: HttpClientService<FilesModel>;
+  @Input() datasetService: HttpClientService<FilesModel> = new DatasetService();
 
+  availableInputDatasets!: FilesModel[];
 
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
@@ -45,6 +47,9 @@ export class CreatePipelineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.datasetService.getAll().then(datasets => {
+      this.availableInputDatasets = datasets;
+    })
   }
 
   toggleModalFile() {
@@ -75,7 +80,7 @@ export class CreatePipelineComponent implements OnInit {
   }
 
   submitFile() {
-    this.fileCreateService.setEndpointName(this.fileService.getEndpointName());
+    this.fileCreateService.setEndpointName(this.datasetService.getEndpointName());
     const metadata = new FilesModel();
     metadata.name = this.pipelineCreateForm.get('name')?.value;
     metadata.description = this.pipelineCreateForm.get('description')?.value;

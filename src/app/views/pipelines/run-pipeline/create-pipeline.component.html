@@ -31,4 +31,4 @@
     </c-card>
   </c-col>
 </c-row>
-<file-selection (selectedFilesEvent)="inputDatasetsSelected($event)"></file-selection>
+<file-selection [availableFiles]="availableInputDatasets" (selectedFilesEvent)="inputDatasetsSelected($event)"></file-selection>

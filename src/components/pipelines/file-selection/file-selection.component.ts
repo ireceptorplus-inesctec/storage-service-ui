@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FilesModel } from "../../../models/files";
+import {HttpClientService} from "../../../app/services/http-client-service";
 
 @Component({
   selector: 'file-selection',
@@ -7,6 +8,8 @@ import { FilesModel } from "../../../models/files";
   styleUrls: ['./file-selection.component.scss']
 })
 export class FileSelectionComponent implements OnInit {
+
+  @Input() availableFiles!: FilesModel[];
 
   @Output() selectedFilesEvent = new EventEmitter<FilesModel[]>();
   actionName: string = "a";
