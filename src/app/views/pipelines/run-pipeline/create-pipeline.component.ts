@@ -6,6 +6,7 @@ import { FilesCreateResultToastComponent } from "../../../../components/files/fi
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateService } from "../../../services/file-create-service";
 import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
+import {FileSelectionComponent} from "../../../../components/pipelines/file-selection/file-selection.component";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -29,6 +30,7 @@ export class CreatePipelineComponent implements OnInit {
   progress!: string;
 
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
+  @ViewChild(FileSelectionComponent) fileSelectionComponent!: FileSelectionComponent;
 
   inputDatasets: FilesModel[] = new Array();
 
@@ -65,7 +67,7 @@ export class CreatePipelineComponent implements OnInit {
   }
 
   openFilePickingModal() {
-
+    this.fileSelectionComponent.toggleModalFile();
   }
 
   inputDatasetsSelected(inputDatasets: FilesModel[]) {
