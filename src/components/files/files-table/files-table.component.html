@@ -19,9 +19,8 @@
             <tr *ngFor="let file of files">
               <td>
                 <div *ngIf="selectable" class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Default checkbox
+                  <input class="form-check-input" type="checkbox" value="" id="{{checkboxPrefix}}{{file.uuid}}" (click)="checkBoxStateChanged($event)">
+                  <label class="form-check-label" for="{{checkboxPrefix}}{{file.uuid}}">
                   </label>
                 </div>
                 <button cButton class="primary" variant="ghost" (click)="openFileDetails(file)">

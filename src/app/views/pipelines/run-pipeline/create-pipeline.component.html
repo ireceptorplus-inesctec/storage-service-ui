@@ -10,7 +10,7 @@
             <div class="input-datasets-div">
               <label cLabel for="inputDatasetList">Input datasets</label>
               <ul class="list-group" id="inputDatasetList">
-                <li class="list-group-item" *ngFor="let file of inputDatasets">file.uuid</li>
+                <li class="list-group-item" *ngFor="let file of inputDatasets">{{file.uuid}}</li>
               </ul>
               <button cButton class="primary" (click)="openFilePickingModal()">
                 Select input datasets
@@ -31,4 +31,4 @@
     </c-card>
   </c-col>
 </c-row>
-<file-selection [availableFiles]="availableInputDatasets" (selectedFilesEvent)="inputDatasetsSelected($event)"></file-selection>
+<file-selection [availableFiles]="availableInputDatasets" (selectedFilesOutput)="inputDatasetsSelected($event)"></file-selection>

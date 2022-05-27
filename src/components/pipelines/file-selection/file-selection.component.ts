@@ -11,14 +11,14 @@ export class FileSelectionComponent implements OnInit {
 
   @Input() availableFiles!: FilesModel[];
 
-  @Output() selectedFilesEvent = new EventEmitter<FilesModel[]>();
-  actionName: string = "a";
+  @Output() selectedFilesOutput = new EventEmitter<FilesModel[]>();
+  actionNameForInputDatasetSelectionTable: string = "Select";
+  selectableForInputDatasetSelectionTable: boolean = true;
   public modalFileOpen = false;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.actionName);
   }
 
 
@@ -37,8 +37,13 @@ export class FileSelectionComponent implements OnInit {
 
   }
 
-  submitSelection() {
+  handleSelectedFilesChanged(selectedFiles: FilesModel[]) {
+    console.log(selectedFiles);
+    this.selectedFilesOutput.emit(selectedFiles);
+  }
 
+  submitSelection() {
+    this.toggleModalFile();
   }
 
 }
