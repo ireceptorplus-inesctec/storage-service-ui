@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FilesModel } from "../../../models/files";
 
 @Component({
   selector: 'file-selection',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileSelectionComponent implements OnInit {
 
+  @Output() selectedFilesEvent = new EventEmitter<FilesModel[]>();
   actionName: string = "a";
   public modalFileOpen = false;
 

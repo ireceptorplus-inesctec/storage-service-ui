@@ -19,11 +19,11 @@ import { IconModule } from '@coreui/icons-angular';
 
 import { FormsModule } from '@angular/forms';
 import { ToolsComponent } from "./tools/tools.component";
-import {CreatePipelineComponent} from "./run-pipeline/create-pipeline.component";
-import {FileCreateService} from "../../services/file-create-service";
-import {HttpClientModule} from "@angular/common/http";
-import {FileSelectionComponent} from "../../../components/pipelines/file-selection/file-selection.component";
-import {FilesTableComponent} from "../../../components/files/files-table/files-table.component";
+import { CreatePipelineComponent } from "./run-pipeline/create-pipeline.component";
+import { FileCreateService } from "../../services/file-create-service";
+import { HttpClientModule } from "@angular/common/http";
+import { FileSelectionComponent } from "../../../components/pipelines/file-selection/file-selection.component";
+import { FilesModule } from "../files/files.module";
 
 @NgModule({
   imports: [
@@ -49,6 +49,7 @@ import {FilesTableComponent} from "../../../components/files/files-table/files-t
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule,
+    FilesModule
   ],
   declarations: [
     ToolsComponent,

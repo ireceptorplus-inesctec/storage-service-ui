@@ -31,7 +31,6 @@ export class CreatePipelineComponent implements OnInit {
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
   inputDatasets: FilesModel[] = new Array();
-  outputDatasets: FilesModel[] = new Array();
 
   pipelineCreateForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -67,6 +66,10 @@ export class CreatePipelineComponent implements OnInit {
 
   openFilePickingModal() {
 
+  }
+
+  inputDatasetsSelected(inputDatasets: FilesModel[]) {
+    this.inputDatasets = inputDatasets;
   }
 
   submitFile() {
