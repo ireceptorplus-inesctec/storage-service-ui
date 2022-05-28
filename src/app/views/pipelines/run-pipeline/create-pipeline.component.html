@@ -7,6 +7,10 @@
       <c-card-body>
         <form cForm [formGroup]="pipelineCreateForm">
           <div class="mb-3 form-group">
+            <div class="mb-3 form-group">
+              <label cLabel for="name">Name</label>
+              <input cFormControl name="name" id="name" type="text" formControlName="name"/>
+            </div>
             <div class="input-datasets-div">
               <label cLabel for="inputDatasetList">Input datasets</label>
               <ul class="list-group" id="inputDatasetList">
@@ -27,6 +31,8 @@
             <input cFormControl name="description" id="description" type="text" formControlName="description"/>
           </div>
         </form>
+
+        <button (click)="submit()" cButton color="primary">Ok</button>
       </c-card-body>
     </c-card>
   </c-col>

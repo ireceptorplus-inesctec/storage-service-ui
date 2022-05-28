@@ -39,7 +39,7 @@ export class CreatePipelineComponent implements OnInit {
   pipelineCreateForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     description: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    file: new FormControl('', []),
+    script: new FormControl('', []),
   });
 
   constructor(protected fileCreateService: FileCreateService<FilesModel>) {
@@ -57,10 +57,6 @@ export class CreatePipelineComponent implements OnInit {
       this.initModal();
 
     this.modalFileOpen = !this.modalFileOpen;
-  }
-
-  handleModalFileChange(event: boolean) {
-    this.modalFileOpen = event;
   }
 
   initModal() {
@@ -82,7 +78,7 @@ export class CreatePipelineComponent implements OnInit {
       this.script = files[0];
   }
 
-  submitFile() {
+  submit() {
     this.fileCreateService.setEndpointName(this.datasetService.getEndpointName());
     const metadata = new FilesModel();
     metadata.name = this.pipelineCreateForm.get('name')?.value;
