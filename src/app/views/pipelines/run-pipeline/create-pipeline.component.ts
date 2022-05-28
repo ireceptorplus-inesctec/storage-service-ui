@@ -27,7 +27,7 @@ export class CreatePipelineComponent implements OnInit {
 
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
-  file!: File;
+  script!: File;
 
   progress!: string;
 
@@ -63,10 +63,6 @@ export class CreatePipelineComponent implements OnInit {
     this.modalFileOpen = event;
   }
 
-  onFileChange(event: any) {
-    this.file = event.target.files[0];
-  }
-
   initModal() {
     this.progress = "0";
   }
@@ -79,6 +75,13 @@ export class CreatePipelineComponent implements OnInit {
     this.inputDatasets = inputDatasets;
   }
 
+  scriptFileChanged(event: Event)
+  {
+    let files = (<HTMLInputElement> event.target).files;
+    if (files != null)
+      this.script = files[0];
+  }
+
   submitFile() {
     this.fileCreateService.setEndpointName(this.datasetService.getEndpointName());
     const metadata = new FilesModel();
@@ -86,7 +89,7 @@ export class CreatePipelineComponent implements OnInit {
     metadata.description = this.pipelineCreateForm.get('description')?.value;
     this.fileCreateService.createFileWithProgressMonitoring(
       metadata,
-      this.file,
+      this.script,
       this.handleError
     ).subscribe((event: HttpEvent<any>) => {
 

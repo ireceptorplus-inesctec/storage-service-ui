@@ -16,19 +16,20 @@
                 Select input datasets
               </button>
             </div>
+            <div class="script-div">
+              <label cLabel for="script">Select script file to upload</label>
+              <input cFormControl name="script" id="script" multiple type="file" formControlName="file"
+                     (change)="scriptFileChanged($event)"/>
+            </div>
           </div>
           <div class="mb-3 form-group">
             <label cLabel for="description">Description</label>
             <input cFormControl name="description" id="description" type="text" formControlName="description"/>
-          </div>
-          <div class="mb-3 form-group">
-            <label cLabel for="file">Select files to upload</label>
-            <input cFormControl name="file" id="file" multiple type="file" formControlName="file"
-                   (change)="onFileChange($event)"/>
           </div>
         </form>
       </c-card-body>
     </c-card>
   </c-col>
 </c-row>
-<file-selection [availableFiles]="availableInputDatasets" (selectedFilesOutput)="inputDatasetsSelected($event)"></file-selection>
+<file-selection [availableFiles]="availableInputDatasets"
+                (selectedFilesOutput)="inputDatasetsSelected($event)"></file-selection>
