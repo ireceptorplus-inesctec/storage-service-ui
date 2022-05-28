@@ -8,6 +8,8 @@ import { FileCreateService } from "../../../services/file-create-service";
 import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
 import { FileSelectionComponent } from "../../../../components/pipelines/file-selection/file-selection.component";
 import { DatasetService } from "../../../services/dataset-service";
+import {CreatedPipeline} from "../../../../models/pipeline";
+import {CreatedPipelineService} from "../../../services/pipeline-service";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -21,7 +23,9 @@ export class CreatePipelineComponent implements OnInit {
    */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
-  @Input() datasetService: HttpClientService<FilesModel> = new DatasetService();
+  datasetService: HttpClientService<FilesModel> = new DatasetService();
+  pipelineService: HttpClientService<CreatedPipeline> = new CreatedPipelineService();
+
 
   availableInputDatasets!: FilesModel[];
 
@@ -34,6 +38,8 @@ export class CreatePipelineComponent implements OnInit {
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
   @ViewChild(FileSelectionComponent) fileSelectionComponent!: FileSelectionComponent;
 
+  @ViewChild(FilesCreateResultToastComponent) filesCreateResultToastComponent!: FilesCreateResultToastComponent;
+
   inputDatasets: FilesModel[] = new Array();
 
   pipelineCreateForm = new FormGroup({
@@ -42,7 +48,7 @@ export class CreatePipelineComponent implements OnInit {
     script: new FormControl('', []),
   });
 
-  constructor(protected fileCreateService: FileCreateService<FilesModel>) {
+  constructor() {
 
   }
 
@@ -79,50 +85,39 @@ export class CreatePipelineComponent implements OnInit {
   }
 
   submit() {
-    this.fileCreateService.setEndpointName(this.datasetService.getEndpointName());
-    const metadata = new FilesModel();
-    metadata.name = this.pipelineCreateForm.get('name')?.value;
-    metadata.description = this.pipelineCreateForm.get('description')?.value;
-    this.fileCreateService.createFileWithProgressMonitoring(
-      metadata,
-      this.script,
-      this.handleError
-    ).subscribe((event: HttpEvent<any>) => {
+    const pipeline = new CreatedPipeline();
+    pipeline.name = this.pipelineCreateForm.get('name')?.value;
+    pipeline.description = this.pipelineCreateForm.get('description')?.value;
+    let inputDatasetsUuids: string[] = new Array();
+    for (let file of this.inputDatasets)
+    {
+      inputDatasetsUuids.push(file.uuid);
+    }
+    pipeline.inputDatasetsUuids = inputDatasetsUuids;
+    this.pipelineService.create(pipeline).then(serverReturn => {
+        let datasetModel: FilesModel = serverReturn;
+        this.showResultMessageToast(true, serverReturn);
+        this.toggleModalFile();
+      },
+      serverReturn => {
+        this.showResultMessageToast(false, serverReturn);
+      });
 
-      switch (event.type) {
-        case HttpEventType.Sent:
-          console.log('Request has been made!');
-          break;
-        case HttpEventType.ResponseHeader:
-          console.log('Response header has been received!');
-          break;
-        case HttpEventType.UploadProgress:
-          var eventTotal = event.total ? event.total : 0;
-          this.progress = Math.round(event.loaded / eventTotal * 100).toString();
-          console.log(`Uploaded! ${this.progress}%`);
-          break;
-        case HttpEventType.Response:
-          let datasetModel: FilesModel = event.body;
-          this.resultToast.toggleToast("File created successfully",
-            "The file was successfully added to the database.");
-          console.log('File Uploaded Successfully!', event.body);
-          this.toggleModalFile();
-      }
-    })
   }
 
-  handleError(error: HttpErrorResponse) {
-    let creationResultMsgTitle: string;
-    let creationResultMsgDescription: string;
-    if (error.error instanceof ErrorEvent) {
-      creationResultMsgTitle = "File creation failed";
-      creationResultMsgDescription = "Client-side error: " + error.error.message;
-    } else {
-      creationResultMsgTitle = "File creation failed";
-      creationResultMsgDescription = "Server-side error: " + `Error Code: ${error.status}\nMessage: ${error.message}`;
+  showResultMessageToast(success: boolean, serverReturn: any)
+  {
+    let msgTitle: string;
+    let msgDescription: string;
+    if (success)
+    {
+      msgTitle = "Pipeline created successfully";
+      msgDescription = "The pipeline was sucessfully created on server";
     }
-    this.resultToast.toggleToast(creationResultMsgTitle, creationResultMsgDescription);
-
-    this.toggleModalFile();
+    else
+    {
+      msgTitle = "Pipeline creation failed";
+      msgDescription = "The pipeline creation has failed. Server returned: " + serverReturn;
+    }
   }
 }

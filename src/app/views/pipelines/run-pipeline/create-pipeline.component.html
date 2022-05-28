@@ -11,7 +11,7 @@
               <label cLabel for="name">Name</label>
               <input cFormControl name="name" id="name" type="text" formControlName="name"/>
             </div>
-            <div class="input-datasets-div">
+            <div class="input-datasets-div mb-3 form-group">
               <label cLabel for="inputDatasetList">Input datasets</label>
               <ul class="list-group" id="inputDatasetList">
                 <li class="list-group-item" *ngFor="let file of inputDatasets">{{file.uuid}}</li>
@@ -20,7 +20,7 @@
                 Select input datasets
               </button>
             </div>
-            <div class="script-div">
+            <div class="script-div mb-3 form-group">
               <label cLabel for="script">Select script file to upload</label>
               <input cFormControl name="script" id="script" multiple type="file" formControlName="file"
                      (change)="scriptFileChanged($event)"/>
@@ -39,3 +39,4 @@
 </c-row>
 <file-selection [availableFiles]="availableInputDatasets"
                 (selectedFilesOutput)="inputDatasetsSelected($event)"></file-selection>
+<files-create-result-toast></files-create-result-toast>
