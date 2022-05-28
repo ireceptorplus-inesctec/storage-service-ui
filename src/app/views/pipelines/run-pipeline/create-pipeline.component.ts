@@ -6,8 +6,8 @@ import { FilesCreateResultToastComponent } from "../../../../components/files/fi
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileCreateService } from "../../../services/file-create-service";
 import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
-import {FileSelectionComponent} from "../../../../components/pipelines/file-selection/file-selection.component";
-import {DatasetService} from "../../../services/dataset-service";
+import { FileSelectionComponent } from "../../../../components/pipelines/file-selection/file-selection.component";
+import { DatasetService } from "../../../services/dataset-service";
 
 @Component({
   selector: 'app-run-pipeline',
