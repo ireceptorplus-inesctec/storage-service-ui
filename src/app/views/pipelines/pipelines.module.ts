@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {
   ButtonGroupModule,
   ButtonModule, CalloutModule,
-  CardModule,
+  CardModule, DropdownModule,
   FormModule,
   GridModule, ModalModule,
   TableModule,
@@ -49,7 +49,8 @@ import { FilesModule } from "../files/files.module";
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule,
-    FilesModule
+    FilesModule,
+    DropdownModule
   ],
   declarations: [
     ToolsComponent,

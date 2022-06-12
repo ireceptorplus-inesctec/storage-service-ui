@@ -20,10 +20,16 @@
                 Select input datasets
               </button>
             </div>
-            <div class="script-div mb-3 form-group">
-              <label cLabel for="script">Select script file to upload</label>
-              <input cFormControl name="script" id="script" multiple type="file" formControlName="file"
-                     (change)="scriptFileChanged($event)"/>
+            <div class="dropdown mb-3 form-group">
+              <c-dropdown>
+                <label cLabel for="tool">Select the tool</label>
+                <button cButton cDropdownToggle name="tool" id="tool" color="secondary">
+                  Tool
+                </button>
+                <ul cDropdownMenu>
+                  <li *ngFor="let tool of tools"><a [routerLink]="[]" cDropdownItem>{{tool.name}}</a></li>
+                </ul>
+              </c-dropdown>
             </div>
           </div>
           <div class="mb-3 form-group">

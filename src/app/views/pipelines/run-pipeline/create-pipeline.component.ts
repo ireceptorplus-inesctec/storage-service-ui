@@ -10,6 +10,8 @@ import { FileSelectionComponent } from "../../../../components/pipelines/file-se
 import { DatasetService } from "../../../services/dataset-service";
 import {CreatedPipeline} from "../../../../models/pipeline";
 import {CreatedPipelineService} from "../../../services/pipeline-service";
+import {ToolsService} from "../../../services/tools-service";
+import {Tool} from "../../../../models/tool";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -23,8 +25,12 @@ export class CreatePipelineComponent implements OnInit {
    */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
+  tools: Tool[] = [];
+
   datasetService: HttpClientService<FilesModel> = new DatasetService();
   pipelineService: HttpClientService<CreatedPipeline> = new CreatedPipelineService();
+  toolsService = new ToolsService();
+
 
 
   availableInputDatasets!: FilesModel[];
@@ -55,7 +61,10 @@ export class CreatePipelineComponent implements OnInit {
   ngOnInit(): void {
     this.datasetService.getAll().then(datasets => {
       this.availableInputDatasets = datasets;
-    })
+    });
+    this.toolsService.getAll().then(tools => {
+      this.tools = tools;
+    });
   }
 
   toggleModalFile() {
