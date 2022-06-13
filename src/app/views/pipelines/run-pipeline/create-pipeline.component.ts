@@ -3,15 +3,14 @@ import { FileCreateData } from "../../../../components/files/files-create/file-c
 import { HttpClientService } from "../../../services/http-client-service";
 import { FilesModel } from "../../../../models/files";
 import { FilesCreateResultToastComponent } from "../../../../components/files/files-create-result-toast/files-create-result-toast.component";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { FileCreateService } from "../../../services/file-create-service";
-import { HttpErrorResponse, HttpEvent, HttpEventType } from "@angular/common/http";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileSelectionComponent } from "../../../../components/pipelines/file-selection/file-selection.component";
 import { DatasetService } from "../../../services/dataset-service";
-import {CreatedPipeline} from "../../../../models/pipeline";
-import {CreatedPipelineService} from "../../../services/pipeline-service";
-import {ToolsService} from "../../../services/tools-service";
-import {Tool} from "../../../../models/tool";
+import { CreatedPipeline } from "../../../../models/pipeline";
+import { CreatedPipelineService } from "../../../services/pipeline-service";
+import { ToolsService } from "../../../services/tools-service";
+import { Tool } from "../../../../models/tool";
+import { Command } from "../../../../models/Command";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -25,13 +24,9 @@ export class CreatePipelineComponent implements OnInit {
    */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
-  tools: Tool[] = [];
-
   datasetService: HttpClientService<FilesModel> = new DatasetService();
   pipelineService: HttpClientService<CreatedPipeline> = new CreatedPipelineService();
   toolsService = new ToolsService();
-
-
 
   availableInputDatasets!: FilesModel[];
 
@@ -48,13 +43,20 @@ export class CreatePipelineComponent implements OnInit {
 
   inputDatasets: FilesModel[] = new Array();
 
-  pipelineCreateForm = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    script: new FormControl('', []),
+  tools: Tool[] = [];
+  availableCommands: string[] = ["align"];
+
+
+
+  pipelineCreateForm = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
+    description: ['', [Validators.required, Validators.minLength(3)]],
+    script: ['', []],
+    toolId: ['', [Validators.required]],
+    commandString: ['', [Validators.required]],
   });
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
 
   }
 
@@ -97,6 +99,11 @@ export class CreatePipelineComponent implements OnInit {
     const pipeline = new CreatedPipeline();
     pipeline.name = this.pipelineCreateForm.get('name')?.value;
     pipeline.description = this.pipelineCreateForm.get('description')?.value;
+    const command = new Command();
+    command.toolId = this.pipelineCreateForm.get('toolId')?.value;
+    command.commandString = this.pipelineCreateForm.get('commandString')?.value;
+    pipeline.command = command;
+    console.log(pipeline);
     let inputDatasetsUuids: string[] = new Array();
     for (let file of this.inputDatasets)
     {

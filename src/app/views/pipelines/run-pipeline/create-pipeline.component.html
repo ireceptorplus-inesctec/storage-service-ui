@@ -25,15 +25,15 @@
               </button>
             </div>
             <div class="dropdown mb-3 form-group">
-                <label cLabel for="tool">Select the tool</label>
-                <select aria-label="Default select example" id="tool" cSelect>
-                  <option *ngFor="let tool of tools">{{tool.name}}</option>
+                <label cLabel for="toolId">Select the tool</label>
+                <select aria-label="Default select example" name="toolId" id="toolId" formControlName="toolId" cSelect>
+                  <option *ngFor="let tool of tools" [ngValue]="tool.name">{{tool.name}}</option>
                 </select>
             </div>
             <div class="dropdown mb-3 form-group">
-              <label cLabel for="command">Select the command</label>
-                <select aria-label="Default select example" id="command" cSelect>
-                  <option>align</option>
+              <label cLabel for="commandString">Select the command</label>
+                <select aria-label="Default select example" name="commandString" id="commandString" formControlName="commandString" cSelect>
+                  <option *ngFor="let command of availableCommands" [ngValue]="command">{{command}}</option>
                 </select>
             </div>
           </div>
