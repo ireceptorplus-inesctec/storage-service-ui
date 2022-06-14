@@ -1,9 +1,9 @@
 export class Command {
-  toolId: string;
-  commandString: string;
+  tool_name: string;
+  command_string: string;
 
   constructor() {
-    this.toolId = "";
-    this.commandString = "";
+    this.tool_name = "";
+    this.command_string = "";
   }
 }

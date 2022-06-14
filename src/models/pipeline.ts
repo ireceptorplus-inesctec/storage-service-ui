@@ -8,7 +8,7 @@ export class CreatedPipeline {
   name: string;
   description: string;
   creationDate: Date;
-  inputDatasetsUuids: string[];
+  input_datasets_uuids: string[];
   command: Command;
 
 
@@ -17,7 +17,7 @@ export class CreatedPipeline {
     this.name = "";
     this.description = "";
     this.creationDate = new Date();
-    this.inputDatasetsUuids = new Array();
+    this.input_datasets_uuids = new Array();
     this.command = new Command();
   }
 }

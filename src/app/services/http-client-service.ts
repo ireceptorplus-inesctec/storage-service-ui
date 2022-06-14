@@ -21,6 +21,9 @@ export class HttpClientService<T> {
 
   public async request(url: string, method?: string, body?: any): Promise<any> {
     return fetch(url, {
+      headers: {
+        'Content-type': 'application/json'
+      },
       method: method ?? 'GET',
       body: body ?? null,
     }).then((response) => {

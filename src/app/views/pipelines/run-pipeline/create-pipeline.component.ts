@@ -100,18 +100,19 @@ export class CreatePipelineComponent implements OnInit {
     pipeline.name = this.pipelineCreateForm.get('name')?.value;
     pipeline.description = this.pipelineCreateForm.get('description')?.value;
     const command = new Command();
-    command.toolId = this.pipelineCreateForm.get('toolId')?.value;
-    command.commandString = this.pipelineCreateForm.get('commandString')?.value;
+    command.tool_name = this.pipelineCreateForm.get('toolId')?.value;
+    command.command_string = this.pipelineCreateForm.get('commandString')?.value;
     pipeline.command = command;
-    console.log(pipeline);
+    console.log(JSON.stringify(pipeline));
+
     let inputDatasetsUuids: string[] = new Array();
     for (let file of this.inputDatasets)
     {
       inputDatasetsUuids.push(file.uuid);
     }
-    pipeline.inputDatasetsUuids = inputDatasetsUuids;
+    pipeline.input_datasets_uuids = inputDatasetsUuids;
     this.pipelineService.create(pipeline).then(serverReturn => {
-        let datasetModel: FilesModel = serverReturn;
+        let createdPipeline: CreatedPipeline = serverReturn;
         this.showResultMessageToast(true, serverReturn);
         this.toggleModalFile();
       },
