@@ -11,6 +11,7 @@ import { CreatedPipelineService } from "../../../services/pipeline-service";
 import { ToolsService } from "../../../services/tools-service";
 import { Tool } from "../../../../models/tool";
 import { Command } from "../../../../models/Command";
+import {CommandService} from "../../../services/command-service";
 
 @Component({
   selector: 'app-run-pipeline',
@@ -24,9 +25,10 @@ export class CreatePipelineComponent implements OnInit {
    */
   @Output() onFileUpload = new EventEmitter<FileCreateData>();
 
-  datasetService: HttpClientService<FilesModel> = new DatasetService();
-  pipelineService: HttpClientService<CreatedPipeline> = new CreatedPipelineService();
+  datasetService = new DatasetService();
+  pipelineService = new CreatedPipelineService();
   toolsService = new ToolsService();
+  commandService = new CommandService();
 
   availableInputDatasets!: FilesModel[];
 
@@ -44,7 +46,7 @@ export class CreatePipelineComponent implements OnInit {
   inputDatasets: FilesModel[] = new Array();
 
   tools: Tool[] = [];
-  availableCommands: string[] = ["align"];
+  availableCommands: Command[] = [];
 
 
 
@@ -53,7 +55,7 @@ export class CreatePipelineComponent implements OnInit {
     description: ['', [Validators.required, Validators.minLength(3)]],
     script: ['', []],
     toolId: ['', [Validators.required]],
-    commandString: ['', [Validators.required]],
+    commandId: ['', [Validators.required]],
   });
 
   constructor(private fb: FormBuilder) {
@@ -66,6 +68,10 @@ export class CreatePipelineComponent implements OnInit {
     });
     this.toolsService.getAll().then(tools => {
       this.tools = tools;
+    });
+    this.commandService.getAll().then(commands => {
+      this.availableCommands = commands;
+      console.log(commands);
     });
   }
 
@@ -99,10 +105,7 @@ export class CreatePipelineComponent implements OnInit {
     const pipeline = new CreatedPipeline();
     pipeline.name = this.pipelineCreateForm.get('name')?.value;
     pipeline.description = this.pipelineCreateForm.get('description')?.value;
-    const command = new Command();
-    command.tool_name = this.pipelineCreateForm.get('toolId')?.value;
-    command.command_string = this.pipelineCreateForm.get('commandString')?.value;
-    pipeline.command = command;
+    pipeline.commandId = this.pipelineCreateForm.get('commandId')?.value;
     console.log(JSON.stringify(pipeline));
 
     let inputDatasetsUuids: string[] = new Array();
@@ -110,7 +113,7 @@ export class CreatePipelineComponent implements OnInit {
     {
       inputDatasetsUuids.push(file.uuid);
     }
-    pipeline.input_datasets_uuids = inputDatasetsUuids;
+    pipeline.inputDatasetsUuids = inputDatasetsUuids;
     this.pipelineService.create(pipeline).then(serverReturn => {
         let createdPipeline: CreatedPipeline = serverReturn;
         this.showResultMessageToast(true, serverReturn);

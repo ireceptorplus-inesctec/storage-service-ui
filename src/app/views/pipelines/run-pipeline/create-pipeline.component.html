@@ -31,9 +31,9 @@
                 </select>
             </div>
             <div class="dropdown mb-3 form-group">
-              <label cLabel for="commandString">Select the command</label>
-                <select aria-label="Default select example" name="commandString" id="commandString" formControlName="commandString" cSelect>
-                  <option *ngFor="let command of availableCommands" [ngValue]="command">{{command}}</option>
+              <label cLabel for="command">Select the command</label>
+                <select aria-label="Default select example" name="command" id="command" formControlName="commandId" cSelect>
+                  <option *ngFor="let command of availableCommands" [ngValue]="command.id">{{command.commandString}}</option>
                 </select>
             </div>
           </div>

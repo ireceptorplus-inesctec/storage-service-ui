@@ -8,8 +8,8 @@ export class CreatedPipeline {
   name: string;
   description: string;
   creationDate: Date;
-  input_datasets_uuids: string[];
-  command: Command;
+  inputDatasetsUuids: string[];
+  commandId: number;
 
 
   constructor() {
@@ -17,8 +17,8 @@ export class CreatedPipeline {
     this.name = "";
     this.description = "";
     this.creationDate = new Date();
-    this.input_datasets_uuids = new Array();
-    this.command = new Command();
+    this.inputDatasetsUuids = new Array();
+    this.commandId = 0;
   }
 }
 
