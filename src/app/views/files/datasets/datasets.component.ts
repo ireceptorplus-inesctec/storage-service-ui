@@ -11,6 +11,13 @@ export class DatasetsComponent implements OnInit {
   datasets: FilesModel[] = [];
   datasetService = new DatasetService;
 
+  columnsToDisplayOnTable = [
+    "UUID",
+    "Name",
+    "Description",
+    "Date"
+  ];
+
   @ViewChild(FilesCreateComponent) filesCreateComponent!: FilesCreateComponent;
 
   constructor() {}

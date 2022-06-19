@@ -23,6 +23,8 @@ export class FilesTableComponent {
 
   @ViewChild(FileDetailsComponent) fileDetailsComponent!: FileDetailsComponent;
 
+  @Input() columnsToDisplay: string[] = [];
+
   constructor( public iconSetService: IconSetService ) {
     iconSetService.icons = { ...iconSubset };
   }

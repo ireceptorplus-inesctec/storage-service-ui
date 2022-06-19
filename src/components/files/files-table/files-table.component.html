@@ -9,10 +9,7 @@
           <thead>
             <tr>
               <th scope="col">{{actionName}}</th>
-              <th scope="col">UUID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Description</th>
-              <th scope="col">Date</th>
+              <th *ngFor="let column of columnsToDisplay">{{column}}</th>
             </tr>
           </thead>
           <tbody>
