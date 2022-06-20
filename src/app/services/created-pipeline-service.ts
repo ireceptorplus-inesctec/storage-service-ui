@@ -1,7 +1,7 @@
 import { HttpClientService } from './http-client-service';
-import { CreatedPipeline } from "../../models/pipeline";
+import { Pipeline } from "../../models/pipeline";
 
-export class CreatedPipelineService extends HttpClientService<CreatedPipeline> {
+export class CreatedPipelineService extends HttpClientService<Pipeline> {
   constructor() {
     super('created_pipeline');
   }

@@ -4,7 +4,7 @@
 import {Command} from "./Command";
 import {FilesModel} from "./files";
 
-export class CreatedPipeline {
+export class Pipeline {
   uuid: string;
   name: string;
   description: string;
@@ -13,6 +13,9 @@ export class CreatedPipeline {
   commandId: number;
   command: Command;
   inputDatasets: FilesModel[];
+
+  outputDatasetsUuids: string[];
+  outputDatasets: FilesModel[];
 
   constructor() {
     this.uuid = "";
@@ -23,18 +26,8 @@ export class CreatedPipeline {
     this.commandId = 0;
     this.command = new Command();
     this.inputDatasets = [];
-  }
-}
-
-export class FinishedPipeline extends CreatedPipeline {
-  outputDatasetsUuids: string[];
-  outputDatasets: FilesModel[];
-
-  constructor() {
-    super();
-    this.outputDatasetsUuids = new Array();
-    this.command = new Command();
     this.inputDatasets = [];
     this.outputDatasets = [];
+    this.outputDatasetsUuids = [];
   }
 }

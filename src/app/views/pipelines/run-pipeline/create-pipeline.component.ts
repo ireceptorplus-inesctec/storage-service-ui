@@ -6,7 +6,7 @@ import { FilesCreateResultToastComponent } from "../../../../components/files/fi
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { FileSelectionComponent } from "../../../../components/pipelines/file-selection/file-selection.component";
 import { DatasetService } from "../../../services/dataset-service";
-import { CreatedPipeline } from "../../../../models/pipeline";
+import { Pipeline } from "../../../../models/pipeline";
 import { CreatedPipelineService } from "../../../services/created-pipeline-service";
 import { ToolsService } from "../../../services/tools-service";
 import { Tool } from "../../../../models/tool";
@@ -102,7 +102,7 @@ export class CreatePipelineComponent implements OnInit {
   }
 
   submit() {
-    const pipeline = new CreatedPipeline();
+    const pipeline = new Pipeline();
     pipeline.name = this.pipelineCreateForm.get('name')?.value;
     pipeline.description = this.pipelineCreateForm.get('description')?.value;
     pipeline.commandId = this.pipelineCreateForm.get('commandId')?.value;
@@ -115,7 +115,7 @@ export class CreatePipelineComponent implements OnInit {
     }
     pipeline.inputDatasetsUuids = inputDatasetsUuids;
     this.pipelineService.create(pipeline).then(serverReturn => {
-        let createdPipeline: CreatedPipeline = serverReturn;
+        let createdPipeline: Pipeline = serverReturn;
         this.showResultMessageToast(true, serverReturn);
         this.toggleModalFile();
       },

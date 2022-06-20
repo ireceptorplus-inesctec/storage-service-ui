@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FinishedPipeline} from "../../../../models/pipeline";
+import {Pipeline} from "../../../../models/pipeline";
 import {DatasetService} from "../../../services/dataset-service";
 import {FinishedPipelineService} from "../../../services/finished-pipeline-service";
 
@@ -22,7 +22,7 @@ export class FinishedPipelinesComponent implements OnInit {
     "Command"
   ];
 
-  finishedPipelines: FinishedPipeline[] = [];
+  finishedPipelines: Pipeline[] = [];
 
   contentName = "Pipelines";
 

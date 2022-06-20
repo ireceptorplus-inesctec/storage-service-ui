@@ -31,11 +31,11 @@
             Command: {{pipeline?.command?.commandString}}
           </p>
         </div>
-        <div class="file-download-div">
-          <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{pipeline?.uuid}}">
-            <c-icon name="cil-cloud-download" size="2xl"
+        <div class="dropdown mb-3">
+          <button cButton class="primary" variant="ghost" (click)="submitPipelineToBlockchain(pipeline)">
+            <c-icon *ngIf="pipeline.outputDatasets.length != 0" name="cilMagnifyingGlass" size="2xl"
             ></c-icon>
-            Download</a>
+          </button>
         </div>
       </c-card-body>
     </c-card>
