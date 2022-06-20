@@ -14,6 +14,7 @@ import { FileDetailsComponent } from "../../file-details/file-details.component"
 export class FilesTableComponent {
   @Input() files: FilesModel[] = [];
   @Input() actionName: string = "Details";
+  @Input() contentName: string = "Files";
   @Input() selectable: boolean = false;
 
   selectedFiles: FilesModel[] = new Array();
