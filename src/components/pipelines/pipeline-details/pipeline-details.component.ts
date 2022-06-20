@@ -31,18 +31,24 @@ export class PipelineDetailsComponent {
   }
 
   public initModal(pipeline: CreatedPipeline) {
-    this.pipeline = new FinishedPipeline();
-    this.pipeline.uuid = pipeline.uuid;
-    this.pipeline.name = pipeline.name;
-    this.pipeline.description = pipeline.description;
-    this.pipeline.creationDate = pipeline.creationDate;
-    this.pipeline.inputDatasetsUuids = pipeline.inputDatasetsUuids;
-    this.pipeline.commandId = pipeline.commandId;
-    this.pipeline.command = pipeline.command;
-    this.pipeline.inputDatasets = pipeline.inputDatasets;
-    this.pipeline.command = pipeline.command;
-    this.pipeline.command = pipeline.command;
-    this.pipeline = (FinishedPipeline) pipeline;
+    if (pipeline instanceof  FinishedPipeline)
+    {
+      this.pipeline = pipeline;
+    }
+    else
+    {
+      this.pipeline = new FinishedPipeline();
+      this.pipeline.uuid = pipeline.uuid;
+      this.pipeline.name = pipeline.name;
+      this.pipeline.description = pipeline.description;
+      this.pipeline.creationDate = pipeline.creationDate;
+      this.pipeline.inputDatasetsUuids = pipeline.inputDatasetsUuids;
+      this.pipeline.commandId = pipeline.commandId;
+      this.pipeline.command = pipeline.command;
+      this.pipeline.inputDatasets = pipeline.inputDatasets;
+      this.pipeline.outputDatasets = [];
+      this.pipeline.outputDatasetsUuids = [];
+    }
   }
 
   handleModalFileChange(event: boolean) {

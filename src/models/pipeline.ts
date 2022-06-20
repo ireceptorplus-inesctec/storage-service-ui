@@ -14,7 +14,6 @@ export class CreatedPipeline {
   command: Command;
   inputDatasets: FilesModel[];
 
-
   constructor() {
     this.uuid = "";
     this.name = "";
