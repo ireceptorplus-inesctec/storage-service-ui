@@ -24,7 +24,12 @@ export class FilesTableComponent {
 
   @ViewChild(FileDetailsComponent) fileDetailsComponent!: FileDetailsComponent;
 
-  @Input() columnsToDisplay: string[] = [];
+  @Input() columnsToDisplay: string[] = [
+    "UUID",
+    "Name",
+    "Description",
+    "Date"
+  ];
 
   constructor( public iconSetService: IconSetService ) {
     iconSetService.icons = { ...iconSubset };
