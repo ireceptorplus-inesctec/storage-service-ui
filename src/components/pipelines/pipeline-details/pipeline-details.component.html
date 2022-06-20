@@ -7,15 +7,29 @@
     <c-card class="mb-4">
       <c-card-body>
         <h3>{{pipeline?.name}}</h3>
-        <p class="text-medium-emphasis small">
+        <p class="text-high-emphasis">
           {{pipeline?.description}}
         </p>
-        <p class="text-medium-emphasis small">
+        <p class="text-high-emphasis">
           Creation date: {{pipeline?.creationDate}}
         </p>
         <div class="dropdown mb-3">
           <label for="inputDatasets" class="form-label">Input datasets</label>
           <files-table id="inputDatasets" [files]="pipeline.inputDatasets"  ></files-table>
+        </div>
+        <div class="dropdown mb-3">
+          <label for="command" class="form-label">Output datasets</label>
+          <files-table id="command" [files]="pipeline.outputDatasets"  ></files-table>
+        </div>
+        <div class="dropdown mb-3">
+          <p class="text-high-emphasis">
+            Tool: {{pipeline?.command?.toolName}}
+          </p>
+        </div>
+        <div class="dropdown mb-3">
+          <p class="text-high-emphasis">
+            Command: {{pipeline?.command?.commandString}}
+          </p>
         </div>
         <div class="file-download-div">
           <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{pipeline?.uuid}}">

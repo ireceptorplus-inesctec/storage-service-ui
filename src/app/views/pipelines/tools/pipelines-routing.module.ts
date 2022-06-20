@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ToolsComponent } from "./tools.component";
 import { CreatePipelineComponent } from "../run-pipeline/create-pipeline.component";
 import { FinishedPipelinesComponent } from "../finished-pipelines/finished-pipelines.component";
+import {RunningPipelinesComponent} from "../running-pipelines/running-pipelines.component";
 
 const routes: Routes = [
   {
@@ -30,10 +31,17 @@ const routes: Routes = [
         }
       },
       {
+        path: 'running',
+        component: RunningPipelinesComponent,
+        data: {
+          title: 'Running',
+        }
+      },
+      {
         path: 'finished',
         component: FinishedPipelinesComponent,
         data: {
-          title: 'Run pipeline',
+          title: 'Finished',
         }
       }
     ],

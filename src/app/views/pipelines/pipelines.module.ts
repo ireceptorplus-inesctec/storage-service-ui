@@ -27,6 +27,7 @@ import { FilesModule } from "../files/files.module";
 import {FinishedPipelinesComponent} from "./finished-pipelines/finished-pipelines.component";
 import {PipelinesTableComponent} from "../../../components/pipelines/pipelines-table/pipelines-table.component";
 import {PipelineDetailsComponent} from "../../../components/pipelines/pipeline-details/pipeline-details.component";
+import {RunningPipelinesComponent} from "./running-pipelines/running-pipelines.component";
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import {PipelineDetailsComponent} from "../../../components/pipelines/pipeline-d
     FileSelectionComponent,
     FinishedPipelinesComponent,
     PipelinesTableComponent,
-    PipelineDetailsComponent
+    PipelineDetailsComponent,
+    RunningPipelinesComponent
   ],
   providers: [
     FileCreateService
