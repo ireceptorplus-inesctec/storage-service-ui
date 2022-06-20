@@ -4,7 +4,8 @@ import { FilesModel } from 'src/models/files';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../app/icons/icon-subset';
 import { FileDetailsComponent } from "../../file-details/file-details.component";
-import {FinishedPipeline} from "../../../models/pipeline";
+import { FinishedPipeline } from "../../../models/pipeline";
+import { PipelineDetailsComponent } from "../pipeline-details/pipeline-details.component";
 
 @Component({
   selector: 'pipelines-table',
@@ -23,7 +24,7 @@ export class PipelinesTableComponent {
 
   checkboxPrefix: string = "checkbox-for-file-";
 
-  @ViewChild(FileDetailsComponent) fileDetailsComponent!: FileDetailsComponent;
+  @ViewChild(PipelineDetailsComponent) pipelineDetailsComponent!: PipelineDetailsComponent;
 
   @Input() columnsToDisplay: string[] = [
     "UUID",
@@ -38,11 +39,10 @@ export class PipelinesTableComponent {
     iconSetService.icons = { ...iconSubset };
   }
 
-  openFileDetails(file: FilesModel)
+  openPipelineDetails(pipeline: FinishedPipeline)
   {
-    this.fileDetailsComponent.file = file;
-    this.fileDetailsComponent.initModal();
-    this.fileDetailsComponent.toggleModalFile();
+    this.pipelineDetailsComponent.initModal(pipeline);
+    this.pipelineDetailsComponent.toggleModalFile();
   }
 
   checkBoxStateChanged(event: Event)

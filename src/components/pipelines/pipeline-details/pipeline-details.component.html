@@ -1,1 +1,36 @@
-<p>pipeline-details works!</p>
+<c-modal id="fileDetailsModal" [visible]="modalFileOpen" (visibleChange)="handleModalFileChange($event)" [fullscreen]="true">
+  <c-modal-header>
+    <h5 cModalTitle>Pipeline details</h5>
+    <button (click)="toggleModalFile()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <c-card class="mb-4">
+      <c-card-body>
+        <h3>{{pipeline?.name}}</h3>
+        <p class="text-medium-emphasis small">
+          {{pipeline?.description}}
+        </p>
+        <p class="text-medium-emphasis small">
+          Creation date: {{pipeline?.creationDate}}
+        </p>
+        <div class="dropdown mb-3">
+          <label for="inputDatasets" class="form-label">Input datasets</label>
+          <files-table id="inputDatasets" [files]="pipeline.inputDatasets"  ></files-table>
+        </div>
+        <div class="file-download-div">
+          <a class="btn btn-secondary btn-lg" href="{{baseApiUrl}}/file/{{pipeline?.uuid}}">
+            <c-icon name="cil-cloud-download" size="2xl"
+            ></c-icon>
+            Download</a>
+        </div>
+      </c-card-body>
+    </c-card>
+  </c-modal-body>
+  <c-modal-footer>
+    <button (click)="toggleModalFile()" cButton color="secondary">
+      Close
+    </button>
+  </c-modal-footer>
+</c-modal>
+
+<files-create-result-toast></files-create-result-toast>
