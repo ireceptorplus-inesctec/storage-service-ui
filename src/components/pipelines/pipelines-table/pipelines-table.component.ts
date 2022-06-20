@@ -4,7 +4,7 @@ import { FilesModel } from 'src/models/files';
 import { IconSetService } from '@coreui/icons-angular';
 import { iconSubset } from '../../../app/icons/icon-subset';
 import { FileDetailsComponent } from "../../file-details/file-details.component";
-import { FinishedPipeline } from "../../../models/pipeline";
+import {CreatedPipeline, FinishedPipeline} from "../../../models/pipeline";
 import { PipelineDetailsComponent } from "../pipeline-details/pipeline-details.component";
 
 @Component({
@@ -14,7 +14,7 @@ import { PipelineDetailsComponent } from "../pipeline-details/pipeline-details.c
   providers: [ IconSetService ],
 })
 export class PipelinesTableComponent {
-  @Input() pipelines: FinishedPipeline[] = [];
+  @Input() pipelines: CreatedPipeline[] = [];
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Pipelines";
   @Input() selectable: boolean = false;
@@ -39,7 +39,7 @@ export class PipelinesTableComponent {
     iconSetService.icons = { ...iconSubset };
   }
 
-  openPipelineDetails(pipeline: FinishedPipeline)
+  openPipelineDetails(pipeline: CreatedPipeline)
   {
     this.pipelineDetailsComponent.initModal(pipeline);
     this.pipelineDetailsComponent.toggleModalFile();

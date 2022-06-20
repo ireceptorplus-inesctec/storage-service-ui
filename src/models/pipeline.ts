@@ -11,6 +11,8 @@ export class CreatedPipeline {
   creationDate: Date;
   inputDatasetsUuids: string[];
   commandId: number;
+  command: Command;
+  inputDatasets: FilesModel[];
 
 
   constructor() {
@@ -20,14 +22,13 @@ export class CreatedPipeline {
     this.creationDate = new Date();
     this.inputDatasetsUuids = new Array();
     this.commandId = 0;
+    this.command = new Command();
+    this.inputDatasets = [];
   }
 }
 
 export class FinishedPipeline extends CreatedPipeline {
   outputDatasetsUuids: string[];
-  command: Command;
-
-  inputDatasets: FilesModel[];
   outputDatasets: FilesModel[];
 
   constructor() {
