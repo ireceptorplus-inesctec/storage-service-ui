@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FinishedPipelineService} from "../../../services/finished-pipeline-service";
 import {CreatedPipeline, FinishedPipeline} from "../../../../models/pipeline";
+import {RunningPipelineService} from "../../../services/running-pipelines-service";
 
 @Component({
   selector: 'running-pipelines',
@@ -9,7 +10,7 @@ import {CreatedPipeline, FinishedPipeline} from "../../../../models/pipeline";
 })
 export class RunningPipelinesComponent implements OnInit {
 
-  finishedPipelineService = new FinishedPipelineService();
+  finishedPipelineService = new RunningPipelineService();
 
   columnsToDisplayOnTable = [
     "UUID",
