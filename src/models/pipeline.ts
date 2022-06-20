@@ -22,11 +22,13 @@ export class CreatedPipeline {
   }
 }
 
-export class Pipeline extends CreatedPipeline {
+export class FinishedPipeline extends CreatedPipeline {
   outputDatasetsUuids: string[];
+  command: Command;
 
   constructor() {
     super();
     this.outputDatasetsUuids = new Array();
+    this.command = new Command();
   }
 }

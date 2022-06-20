@@ -7,7 +7,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms"
 import { FileSelectionComponent } from "../../../../components/pipelines/file-selection/file-selection.component";
 import { DatasetService } from "../../../services/dataset-service";
 import { CreatedPipeline } from "../../../../models/pipeline";
-import { CreatedPipelineService } from "../../../services/pipeline-service";
+import { CreatedPipelineService } from "../../../services/created-pipeline-service";
 import { ToolsService } from "../../../services/tools-service";
 import { Tool } from "../../../../models/tool";
 import { Command } from "../../../../models/Command";

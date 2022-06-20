@@ -1,0 +1,42 @@
+<c-row ngPreserveWhitespaces>
+  <c-col xs="12">
+    <c-card class="mb-4">
+      <c-card-header>
+        <strong>List of Available {{contentName}}</strong>
+      </c-card-header>
+      <c-card-body>
+        <table cTable>
+          <thead>
+          <tr>
+            <th scope="col">{{actionName}}</th>
+            <th *ngFor="let column of columnsToDisplay">{{column}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let pipeline of pipelines">
+            <td>
+              <div *ngIf="selectable" class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="{{checkboxPrefix}}{{pipeline.uuid}}" (click)="checkBoxStateChanged($event)">
+                <label class="form-check-label" for="{{checkboxPrefix}}{{pipeline.uuid}}">
+                </label>
+              </div>
+              <button cButton class="primary" variant="ghost" (click)="openFileDetails(pipeline)">
+                <c-icon *ngIf="!selectable" name="cilMagnifyingGlass" size="2xl"
+                ></c-icon>
+              </button>
+            </td>
+            <th scope="row">{{ pipeline.uuid }}</th>
+            <td>{{ pipeline.name }}</td>
+            <td>{{ pipeline.description }}</td>
+            <td>{{ pipeline.creationDate }}</td>
+            <td>{{ pipeline.command.toolName }}</td>
+            <td>{{ pipeline.command.commandString }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+    </c-card>
+  </c-col>
+</c-row>
+
+<pipeline-details></pipeline-details>

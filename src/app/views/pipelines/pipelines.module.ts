@@ -24,6 +24,9 @@ import { FileCreateService } from "../../services/file-create-service";
 import { HttpClientModule } from "@angular/common/http";
 import { FileSelectionComponent } from "../../../components/pipelines/file-selection/file-selection.component";
 import { FilesModule } from "../files/files.module";
+import {FinishedPipelinesComponent} from "./finished-pipelines/finished-pipelines.component";
+import {PipelinesTableComponent} from "../../../components/pipelines/pipelines-table/pipelines-table.component";
+import {PipelineDetailsComponent} from "../../../components/pipelines/pipeline-details/pipeline-details.component";
 
 @NgModule({
   imports: [
@@ -50,12 +53,15 @@ import { FilesModule } from "../files/files.module";
     HttpClientModule,
     ModalModule,
     FilesModule,
-    DropdownModule
+    DropdownModule,
   ],
   declarations: [
     ToolsComponent,
     CreatePipelineComponent,
-    FileSelectionComponent
+    FileSelectionComponent,
+    FinishedPipelinesComponent,
+    PipelinesTableComponent,
+    PipelineDetailsComponent
   ],
   providers: [
     FileCreateService
