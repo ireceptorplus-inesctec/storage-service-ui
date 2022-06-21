@@ -45,6 +45,7 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { FilesModule } from "./views/files/files.module";
+import { AwaitingValidationPipelinesComponent } from './views/pipelines/awaiting-validation-pipelines/awaiting-validation-pipelines.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

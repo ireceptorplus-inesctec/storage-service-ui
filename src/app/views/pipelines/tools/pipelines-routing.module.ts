@@ -4,6 +4,9 @@ import { ToolsComponent } from "./tools.component";
 import { CreatePipelineComponent } from "../run-pipeline/create-pipeline.component";
 import { FinishedPipelinesComponent } from "../finished-pipelines/finished-pipelines.component";
 import {RunningPipelinesComponent} from "../running-pipelines/running-pipelines.component";
+import {
+  AwaitingValidationPipelinesComponent
+} from "../awaiting-validation-pipelines/awaiting-validation-pipelines.component";
 
 const routes: Routes = [
   {
@@ -42,6 +45,13 @@ const routes: Routes = [
         component: FinishedPipelinesComponent,
         data: {
           title: 'Finished',
+        }
+      },
+      {
+        path: 'awaitingValidation',
+        component: AwaitingValidationPipelinesComponent,
+        data: {
+          title: 'Awaiting Validation',
         }
       }
     ],
