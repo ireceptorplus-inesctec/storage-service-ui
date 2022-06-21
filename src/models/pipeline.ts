@@ -30,6 +30,6 @@ export class Pipeline {
     this.inputDatasets = [];
     this.outputDatasets = [];
     this.outputDatasetsUuids = [];
-    this.blockchainState = "NOT_SUBMITTED";
+    this.blockchainState = 'NOT_SUBMITTED';
   }
 }

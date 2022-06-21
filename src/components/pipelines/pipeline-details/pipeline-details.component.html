@@ -31,10 +31,8 @@
             Command: {{pipeline?.command?.commandString}}
           </p>
         </div>
-        <div class="dropdown mb-3">
-          <button cButton class="primary" variant="ghost" (click)="submitPipelineToBlockchain(pipeline)">
-            <c-icon *ngIf="pipeline.outputDatasets.length != 0" name="cilMagnifyingGlass" size="2xl"
-            ></c-icon>
+        <div class="dropdown mb-3" *ngIf="pipeline.blockchainState == 'NOT_SUBMITTED'">
+          <button cButton color="primary" (click)="submitPipelineToBlockchain(pipeline)">Submit to Blockchain
           </button>
         </div>
       </c-card-body>
