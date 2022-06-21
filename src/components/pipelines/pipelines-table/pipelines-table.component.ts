@@ -32,7 +32,8 @@ export class PipelinesTableComponent {
     "Description",
     "Date",
     "Tool",
-    "Command"
+    "Command",
+    "Blockchain sync state"
   ];
 
   constructor( public iconSetService: IconSetService ) {

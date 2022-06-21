@@ -19,7 +19,8 @@ export class FinishedPipelinesComponent implements OnInit {
     "Description",
     "Date",
     "Tool",
-    "Command"
+    "Command",
+    "Blockchain sync state"
   ];
 
   finishedPipelines: Pipeline[] = [];

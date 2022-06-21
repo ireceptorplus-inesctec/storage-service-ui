@@ -16,6 +16,7 @@ export class Pipeline {
 
   outputDatasetsUuids: string[];
   outputDatasets: FilesModel[];
+  blockchainState: string;
 
   constructor() {
     this.uuid = "";
@@ -29,5 +30,6 @@ export class Pipeline {
     this.inputDatasets = [];
     this.outputDatasets = [];
     this.outputDatasetsUuids = [];
+    this.blockchainState = "NOT_SUBMITTED";
   }
 }
