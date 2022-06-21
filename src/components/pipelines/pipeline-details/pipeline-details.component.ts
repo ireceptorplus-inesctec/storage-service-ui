@@ -4,6 +4,7 @@ import { environment } from "../../../environments/environment";
 import { HttpClientService } from "../../../app/services/http-client-service";
 import { Pipeline } from "../../../models/pipeline";
 import { FilesTableComponent } from "../../files/files-table/files-table.component";
+import {TraceabilityDataService} from "../../../app/services/traceability-data-service";
 
 @Component({
   selector: 'pipeline-details',
@@ -11,6 +12,8 @@ import { FilesTableComponent } from "../../files/files-table/files-table.compone
   styleUrls: ['./pipeline-details.component.scss']
 })
 export class PipelineDetailsComponent {
+
+  traceabilityDataService = new TraceabilityDataService();
 
   numberOfLinesToPreview: number = 5;
 
@@ -40,7 +43,7 @@ export class PipelineDetailsComponent {
 
   submitPipelineToBlockchain(pipeline: Pipeline)
   {
-
+    this.traceabilityDataService.create(pipeline);
   }
 
 
