@@ -28,7 +28,7 @@ export class FilesCreateComponent implements OnInit {
 
   progress!: string;
 
-  @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
+    @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
 
 
   fileCreateForm = new FormGroup({
