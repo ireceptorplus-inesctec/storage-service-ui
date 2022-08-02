@@ -29,7 +29,7 @@ export class ChecksRadiosComponent {
       checkbox3: [{value: false, disabled: true}]
     }),
     btnRadioGroup: this.formBuilder.group({
-      radio1: this.formBuilder.control({ value: 'Radio2' })
+      radio1: this.formBuilder.control({ value: 'Radio2', disabled: false })
     })
   });
 
