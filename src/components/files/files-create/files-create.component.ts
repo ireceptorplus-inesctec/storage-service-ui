@@ -66,8 +66,8 @@ export class FilesCreateComponent implements OnInit {
   submitFile() {
     this.fileCreateService.setEndpointName(this.fileService.getEndpointName());
     const metadata = new FilesModel();
-    metadata.name = this.fileCreateForm.get('name')?.value;
-    metadata.description = this.fileCreateForm.get('description')?.value;
+    metadata.name = this.fileCreateForm.get('name')?.value!;
+    metadata.description = this.fileCreateForm.get('description')?.value!;
     this.fileCreateService.createFileWithProgressMonitoring(
       metadata,
       this.file,

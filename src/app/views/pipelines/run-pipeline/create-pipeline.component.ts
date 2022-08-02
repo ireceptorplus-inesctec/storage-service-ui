@@ -103,9 +103,9 @@ export class CreatePipelineComponent implements OnInit {
 
   submit() {
     const pipeline = new Pipeline();
-    pipeline.name = this.pipelineCreateForm.get('name')?.value;
-    pipeline.description = this.pipelineCreateForm.get('description')?.value;
-    pipeline.commandId = this.pipelineCreateForm.get('commandId')?.value;
+    pipeline.name = this.pipelineCreateForm.get('name')?.value!;
+    pipeline.description = this.pipelineCreateForm.get('description')?.value!;
+    pipeline.commandId = Number.parseInt(this.pipelineCreateForm.get('commandId')?.value!);
     console.log(JSON.stringify(pipeline));
 
     let inputDatasetsUuids: string[] = new Array();
