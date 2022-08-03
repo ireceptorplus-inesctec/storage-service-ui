@@ -25,6 +25,7 @@ export class ButtonGroupsComponent {
     const prevValue = this.formCheck1.get(controlName)?.value;
     const value = this.formCheck1.value;
     value[controlName] = !prevValue;
+    // @ts-ignore
     this.formCheck1.setValue(value);
   }
 
