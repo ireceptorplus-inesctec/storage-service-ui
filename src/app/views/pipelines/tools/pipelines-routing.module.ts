@@ -18,41 +18,47 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'tools',
+        pathMatch: 'full'
       },
       {
         path: 'tools',
         component: ToolsComponent,
         data: {
           title: 'Datasets List',
-        }
+        },
+        pathMatch: 'full'
       },
       {
         path: 'create',
         component: CreatePipelineComponent,
         data: {
           title: 'Run pipeline',
-        }
+        },
+        pathMatch: 'full'
       },
       {
         path: 'running',
         component: RunningPipelinesComponent,
         data: {
           title: 'Running',
-        }
+        },
+        pathMatch: 'full'
       },
       {
         path: 'finished',
         component: FinishedPipelinesComponent,
         data: {
           title: 'Finished',
-        }
+        },
+        pathMatch: 'full'
       },
       {
         path: 'awaitingValidation',
         component: AwaitingValidationPipelinesComponent,
         data: {
           title: 'Awaiting Validation',
-        }
+        },
+        pathMatch: 'full'
       }
     ],
   },
