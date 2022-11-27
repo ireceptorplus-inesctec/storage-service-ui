@@ -46,9 +46,9 @@ export class PipelineDetailsComponent {
     this.modalFileOpen = event;
   }
 
-  submitPipelineToBlockchain(pipeline: Pipeline)
+  submitPipelineToBlockchain()
   {
-    this.traceabilityDataService.create(pipeline).then((serverReturn: any) => {
+    this.traceabilityDataService.create(this.pipeline).then((serverReturn: any) => {
       let returnedPipeline: Pipeline = serverReturn;
       this.resultToast.toggleToast("Traceability Data created successfully",
         "The traceability data entry that represents the pipeline was successfully added to the blockchain.");
@@ -58,9 +58,9 @@ export class PipelineDetailsComponent {
     });
   }
 
-  runPipelineAndSubmitVote(pipeline: Pipeline)
+  runPipelineAndSubmitVote()
   {
-    this.traceabilityDataService.runPipeline(pipeline).then((serverReturn: any) => {
+    this.traceabilityDataService.runPipeline(this.pipeline).then((serverReturn: any) => {
       let returnedPipeline: Pipeline = serverReturn;
       this.resultToast.toggleToast("Pipeline in queue to run",
         "The pipeline has been added to the queue. YOu can check the progress in the Running pipelines page");

@@ -32,11 +32,11 @@
           </p>
         </div>
         <div class="dropdown mb-3" *ngIf="pipeline.blockchainState == 'NOT_SUBMITTED'">
-          <button cButton color="primary" (click)="submitPipelineToBlockchain(pipeline)">Submit to Blockchain
+          <button cButton color="primary" (click)="submitPipelineToBlockchain()">Submit to Blockchain
           </button>
         </div>
         <div class="dropdown mb-3" *ngIf="pipeline.blockchainState == 'IN_VOTING_ROUND'">
-          <button cButton color="primary" (click)="runPipelineAndSubmitVote(pipeline)">Run pipeline and submit vote
+          <button cButton color="primary" (click)="runPipelineAndSubmitVote()">Run pipeline and submit vote
           </button>
         </div>
       </c-card-body>
