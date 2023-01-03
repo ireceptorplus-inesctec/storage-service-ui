@@ -30,6 +30,10 @@ export class AwaitingValidationPipelinesComponent implements OnInit {
   ngOnInit(): void {
     this.traceabilityDataService.getAll().then(awaitingValidationPipelines => {
       this.awaitingValidationPipelines = awaitingValidationPipelines;
+      for (let pipeline of this.awaitingValidationPipelines)
+      {
+        pipeline.blockchainState = "IN_VOTING_ROUND";
+      }
     })
   }
 
