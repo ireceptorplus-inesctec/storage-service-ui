@@ -59,6 +59,11 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-input-power' }
   },
   {
+    name: 'Validated',
+    url: '/pipelines/validated',
+    iconComponent: { name: 'cil-input-power' }
+  },
+  {
     title: true,
     name: 'Theme'
   },

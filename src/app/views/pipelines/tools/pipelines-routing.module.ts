@@ -7,6 +7,7 @@ import {RunningPipelinesComponent} from "../running-pipelines/running-pipelines.
 import {
   AwaitingValidationPipelinesComponent
 } from "../awaiting-validation-pipelines/awaiting-validation-pipelines.component";
+import {ValidatedPipelinesComponent} from "../validated-pipelines/validated-pipelines.component";
 
 const routes: Routes = [
   {
@@ -57,6 +58,14 @@ const routes: Routes = [
         component: AwaitingValidationPipelinesComponent,
         data: {
           title: 'Awaiting Validation',
+        },
+        pathMatch: 'full'
+      },
+      {
+        path: 'validated',
+        component: ValidatedPipelinesComponent,
+        data: {
+          title: 'Validated',
         },
         pathMatch: 'full'
       }

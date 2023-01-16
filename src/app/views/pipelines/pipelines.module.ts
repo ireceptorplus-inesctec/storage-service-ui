@@ -28,9 +28,8 @@ import {FinishedPipelinesComponent} from "./finished-pipelines/finished-pipeline
 import {PipelinesTableComponent} from "../../../components/pipelines/pipelines-table/pipelines-table.component";
 import {PipelineDetailsComponent} from "../../../components/pipelines/pipeline-details/pipeline-details.component";
 import {RunningPipelinesComponent} from "./running-pipelines/running-pipelines.component";
-import {
-  AwaitingValidationPipelinesComponent
-} from "./awaiting-validation-pipelines/awaiting-validation-pipelines.component";
+import {AwaitingValidationPipelinesComponent} from "./awaiting-validation-pipelines/awaiting-validation-pipelines.component";
+import {ValidatedPipelinesComponent} from "./validated-pipelines/validated-pipelines.component";
 
 @NgModule({
   imports: [
@@ -67,7 +66,8 @@ import {
     PipelinesTableComponent,
     PipelineDetailsComponent,
     RunningPipelinesComponent,
-    AwaitingValidationPipelinesComponent
+    AwaitingValidationPipelinesComponent,
+    ValidatedPipelinesComponent
   ],
   providers: [
     FileCreateService
