@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { DatasetService } from 'src/app/services/dataset-service';
-import { FilesModel } from 'src/models/files';
-import { FilesCreateComponent } from "../../../../components/files/files-create/files-create.component";
+import {DatasetService} from 'src/app/services/dataset-service';
+import {FilesModel} from 'src/models/files';
+import {FilesCreateComponent} from "../../../../components/files/files-create/files-create.component";
 
 @Component({
   templateUrl: './datasets.component.html',
@@ -20,11 +20,16 @@ export class DatasetsComponent implements OnInit {
 
   @ViewChild(FilesCreateComponent) filesCreateComponent!: FilesCreateComponent;
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.datasetService.getAll().then(datasets => {
       this.datasets = datasets;
     })
+  }
+
+  newDatasetUploaded(file: FilesModel): void {
+    this.datasets.push(file);
   }
 }

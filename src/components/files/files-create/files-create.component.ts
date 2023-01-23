@@ -17,7 +17,7 @@ export class FilesCreateComponent implements OnInit {
   /**
    * This EventEmitter is used to signal main component to create the file.
    */
-  @Output() onFileUpload = new EventEmitter<FileCreateData>();
+  @Output() onFileUpload = new EventEmitter<FilesModel>();
 
   @Input() fileService!: HttpClientService<FilesModel>;
 
@@ -90,6 +90,7 @@ export class FilesCreateComponent implements OnInit {
           let datasetModel: FilesModel = event.body;
           this.resultToast.toggleToast("File created successfully",
             "The file was successfully added to the database.");
+          this.onFileUpload.emit(datasetModel);
           console.log('File Uploaded Successfully!', event.body);
           this.toggleModalFile();
       }
