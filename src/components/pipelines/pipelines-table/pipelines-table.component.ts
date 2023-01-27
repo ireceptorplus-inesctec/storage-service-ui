@@ -18,11 +18,13 @@ export class PipelinesTableComponent {
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Pipelines";
   @Input() selectable: boolean = false;
+  @Input() showBlockchainState: boolean = true;
 
   selectedFiles: FilesModel[] = new Array();
   @Output() selectedFilesOutput = new EventEmitter<FilesModel[]>();
 
   checkboxPrefix: string = "checkbox-for-file-";
+
 
   @ViewChild(PipelineDetailsComponent) pipelineDetailsComponent!: PipelineDetailsComponent;
 
