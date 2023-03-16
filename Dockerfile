@@ -10,6 +10,7 @@ WORKDIR /storage-service-ui
 # where available (npm@5+)
 COPY package.json ./
 
+COPY . .
 
 RUN npm install -g @angular/cli
 RUN npm install
@@ -17,9 +18,10 @@ RUN npm install
 # RUN npm ci --only=production
 
 # Bundle app source
-COPY . .
 
 RUN npm run build
 
 
 
+
+FROM nginx:1.23.3-alpine as production-stage
