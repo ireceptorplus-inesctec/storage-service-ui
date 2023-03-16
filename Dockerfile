@@ -1,5 +1,6 @@
-FROM node:16.16-alpine3.16 as build-stage
+FROM node:16.19.1-alpine3.17 as build-stage
 
+RUN npm install -g npm@9.6.2
 
 # Create app directory
 WORKDIR /storage-service-ui
@@ -7,20 +8,18 @@ WORKDIR /storage-service-ui
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY package*.json ./
+COPY package.json ./
 
 
-RUN npm install
 RUN npm install -g @angular/cli
+RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
 # Bundle app source
 COPY . .
 
-RUN npm run-script build
-
-CMD [ "npm", "run", "dist" ]
+RUN npm run build
 
 
-FROM nginx:1.23.3-alpine as production-stage
+
