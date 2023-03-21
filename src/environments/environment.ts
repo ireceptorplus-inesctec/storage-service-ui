@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://trialreceptor.inesctec.pt/storage/api"
+  apiUrl: "https://127.0.0.1/api"
 };
 
 /*
