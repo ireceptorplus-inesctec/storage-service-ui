@@ -6,7 +6,7 @@ services:
     volumes:
       - ../src:/storage-service-ui/src
     expose:
-      - 80:80
+      - 80
     restart: always
     networks:
       - storage-service-network
