@@ -4,9 +4,16 @@ services:
   storage-service-ui:
     build: ./
     volumes:
-      - ./dist:/usr/share/nginx/html
       - ../src:/storage-service-ui/src
-    ports:
+    expose:
       - 80:80
-      - 443:443
     restart: always
+    networks:
+      - storage-service-network
+
+
+networks:
+  default:
+
+  storage-service-network:
+    external: true
