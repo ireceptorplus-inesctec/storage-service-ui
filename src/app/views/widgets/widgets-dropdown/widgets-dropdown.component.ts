@@ -9,6 +9,9 @@ import {
 } from '@angular/core';
 import { getStyle } from '@coreui/utils/src';
 import { ChartjsComponent } from '@coreui/angular-chartjs';
+import {TraceabilityDataService} from "../../../services/traceability-data-service";
+import {ValidatedTraceabilityDataService} from "../../../services/validated-traceability-data-service";
+import {Pipeline} from "../../../../models/pipeline";
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -17,6 +20,16 @@ import { ChartjsComponent } from '@coreui/angular-chartjs';
   changeDetection: ChangeDetectionStrategy.Default
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
+
+  traceabilityDataService = new TraceabilityDataService();
+  validatedTraceabilityDataService = new ValidatedTraceabilityDataService();
+
+
+  awaitingValidationPipelines: Pipeline[] = [];
+  validatedPipelines: Pipeline[] = [];
+
+  awaitingValidationPipelinesLoaded: boolean = false;
+  validatedPipelinesLoaded: boolean = false;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef
@@ -117,6 +130,24 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     this.setData();
+
+    this.traceabilityDataService.getAll().then(awaitingValidationPipelines => {
+      this.awaitingValidationPipelines = awaitingValidationPipelines;
+      for (let pipeline of this.awaitingValidationPipelines)
+      {
+        pipeline.blockchainState = "IN_VOTING_ROUND";
+      }
+      this.awaitingValidationPipelinesLoaded = true;
+    })
+
+    this.validatedTraceabilityDataService.getAll().then(validatedPipelines => {
+      this.validatedPipelines = validatedPipelines;
+      for (let pipeline of this.validatedPipelines)
+      {
+        pipeline.blockchainState = "VALIDATED";
+      }
+      this.validatedPipelinesLoaded = true;
+    })
   }
 
   ngAfterContentInit(): void {
