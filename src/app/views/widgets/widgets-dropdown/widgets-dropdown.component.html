@@ -6,7 +6,7 @@
       title="Running locally"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        {{awaitingValidationPipelines.length}} pipelines
+        {{runningPipelines.length}} pipelines
       </ng-template>
     </c-widget-stat-a>
   </c-col>
@@ -17,7 +17,7 @@
       color="info"
     >
       <ng-template cTemplateId="widgetValueTemplate" ngPreserveWhitespaces>
-        <span>{{validatedPipelines.length}} pipelines</span>
+        <span>{{finishedPipelines.length}} pipelines</span>
       </ng-template>
     </c-widget-stat-a>
   </c-col>

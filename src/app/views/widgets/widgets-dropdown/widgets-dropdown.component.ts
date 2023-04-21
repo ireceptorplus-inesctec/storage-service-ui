@@ -12,6 +12,8 @@ import { ChartjsComponent } from '@coreui/angular-chartjs';
 import {TraceabilityDataService} from "../../../services/traceability-data-service";
 import {ValidatedTraceabilityDataService} from "../../../services/validated-traceability-data-service";
 import {Pipeline} from "../../../../models/pipeline";
+import {RunningPipelineService} from "../../../services/running-pipelines-service";
+import {FinishedPipelineService} from "../../../services/finished-pipeline-service";
 
 @Component({
   selector: 'app-widgets-dropdown',
@@ -21,10 +23,14 @@ import {Pipeline} from "../../../../models/pipeline";
 })
 export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
+  runningPipelineService = new RunningPipelineService();
+  finishedPipelineService = new FinishedPipelineService();
   traceabilityDataService = new TraceabilityDataService();
   validatedTraceabilityDataService = new ValidatedTraceabilityDataService();
 
 
+  runningPipelines: Pipeline[] = [];
+  finishedPipelines: Pipeline[] = [];
   awaitingValidationPipelines: Pipeline[] = [];
   validatedPipelines: Pipeline[] = [];
 
@@ -130,6 +136,16 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
 
   ngOnInit(): void {
     this.setData();
+
+    this.runningPipelineService.getAll().then(runningPipelines => {
+      this.runningPipelines = runningPipelines;
+      this.awaitingValidationPipelinesLoaded = true;
+    })
+
+    this.finishedPipelineService.getAll().then(finishedPipelines => {
+      this.finishedPipelines = finishedPipelines;
+      this.awaitingValidationPipelinesLoaded = true;
+    })
 
     this.traceabilityDataService.getAll().then(awaitingValidationPipelines => {
       this.awaitingValidationPipelines = awaitingValidationPipelines;
