@@ -1,6 +1,7 @@
 import { HttpClientService } from './http-client-service';
 import {TraceabilityDataToBeSubmitted} from "../../models/traceability-data";
 import {Pipeline} from "../../models/pipeline";
+import {OrgDetails} from "../../models/orgDetails";
 
 export class TraceabilityDataService extends HttpClientService<Pipeline> {
   constructor() {
@@ -10,5 +11,9 @@ export class TraceabilityDataService extends HttpClientService<Pipeline> {
   public runPipeline(pipeline: Pipeline): Promise<Pipeline> {
     const body = JSON.stringify(pipeline);
     return this.request(this.getFileTypeApiUrl() + '/run', 'POST', body);
+  }
+
+  public getOrgDetails(): Promise<OrgDetails> {
+    return this.request(this.getFileTypeApiUrl() + '/getOrgName', 'GET');
   }
 }
