@@ -14,6 +14,6 @@ export class TraceabilityDataService extends HttpClientService<Pipeline> {
   }
 
   public getMyOrgDetails(): Promise<OrgDetails> {
-    return this.request(this.getFileTypeApiUrl() + '/getMyOrgDetails', 'GET');
+    return this.request(this.getFileTypeApiUrl() + '/getMyWalletDetails', 'GET');
   }
 }
