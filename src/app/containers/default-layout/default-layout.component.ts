@@ -15,7 +15,7 @@ export class DefaultLayoutComponent {
   datasetService = new TraceabilityDataService();
 
   ngOnInit(): void {
-    this.datasetService.getOrgDetails().then((orgDetails) => {
+    this.datasetService.getMyOrgDetails().then((orgDetails) => {
       this.orgName = orgDetails.orgName;
     })
   }
