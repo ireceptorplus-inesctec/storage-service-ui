@@ -1,3 +1,4 @@
+<c-spinner class="loadingSpinner" *ngIf="!(awaitingValidationPipelinesLoaded && validatedPipelinesLoaded)" color="primary"></c-spinner>
 <c-row *ngIf="awaitingValidationPipelinesLoaded && validatedPipelinesLoaded" >
   <c-col sm="6" xl="3">
     <c-widget-stat-a

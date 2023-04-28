@@ -7,7 +7,7 @@ import {
   DropdownModule,
   GridModule,
   ProgressModule,
-  SharedModule,
+  SharedModule, SpinnerModule,
   WidgetModule
 } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
@@ -41,7 +41,8 @@ import { WidgetsEComponent } from './widgets-e/widgets-e.component';
     CardModule,
     ComponentsModule,
     ProgressModule,
-    ChartjsModule
+    ChartjsModule,
+    SpinnerModule
   ],
   exports: [
     WidgetsBrandComponent,
