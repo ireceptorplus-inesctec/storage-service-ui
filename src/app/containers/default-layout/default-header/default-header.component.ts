@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { ClassToggleService, HeaderComponent } from '@coreui/angular';
+import {TraceabilityDataService} from "../../../services/traceability-data-service";
 
 @Component({
   selector: 'app-default-header',
@@ -10,6 +11,15 @@ import { ClassToggleService, HeaderComponent } from '@coreui/angular';
 export class DefaultHeaderComponent extends HeaderComponent {
 
   @Input() sidebarId: string = "sidebar";
+
+  userId?: string;
+  datasetService = new TraceabilityDataService();
+
+  ngOnInit(): void {
+    this.datasetService.getMyOrgDetails().then((orgDetails) => {
+      this.userId = orgDetails.userId;
+    })
+  }
 
   public newMessages = new Array(4)
   public newTasks = new Array(5)
