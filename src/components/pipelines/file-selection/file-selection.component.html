@@ -5,7 +5,7 @@
   </c-modal-header>
   <c-modal-body>
 
-    <files-table [actionName]="actionNameForInputDatasetSelectionTable" [selectable]="selectableForInputDatasetSelectionTable" [files]="availableFiles" (selectedFilesOutput)="handleSelectedFilesChanged($event)"></files-table>
+    <files-table [actionName]="actionNameForInputDatasetSelectionTable" [filesAreLoaded]="filesAreLoaded" [selectable]="selectableForInputDatasetSelectionTable" [files]="availableFiles" (selectedFilesOutput)="handleSelectedFilesChanged($event)"></files-table>
 
   </c-modal-body>
   <c-modal-footer>

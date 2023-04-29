@@ -10,6 +10,7 @@ import {HttpClientService} from "../../../app/services/http-client-service";
 export class FileSelectionComponent implements OnInit {
 
   @Input() availableFiles!: FilesModel[];
+  @Input() filesAreLoaded: boolean = false;
 
   @Output() selectedFilesOutput = new EventEmitter<FilesModel[]>();
   actionNameForInputDatasetSelectionTable: string = "Select";

@@ -31,6 +31,7 @@ export class CreatePipelineComponent implements OnInit {
   commandService = new CommandService();
 
   availableInputDatasets!: FilesModel[];
+  availableInputDatasetsAreLoaded: boolean = false;
 
   public modalFileOpen = false;
   metadata: FilesModel = new FilesModel();
@@ -65,6 +66,7 @@ export class CreatePipelineComponent implements OnInit {
   ngOnInit(): void {
     this.datasetService.getAll().then(datasets => {
       this.availableInputDatasets = datasets;
+      this.availableInputDatasetsAreLoaded = true;
     });
     this.toolsService.getAll().then(tools => {
       this.tools = tools;

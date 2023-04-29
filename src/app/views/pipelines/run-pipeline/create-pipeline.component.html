@@ -45,5 +45,6 @@
   </c-col>
 </c-row>
 <file-selection [availableFiles]="availableInputDatasets"
+                [filesAreLoaded]="availableInputDatasetsAreLoaded"
                 (selectedFilesOutput)="inputDatasetsSelected($event)"></file-selection>
 <files-create-result-toast></files-create-result-toast>
