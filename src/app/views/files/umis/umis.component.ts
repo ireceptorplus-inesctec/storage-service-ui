@@ -10,6 +10,7 @@ import { UmiService } from "../../../services/umi-service";
 export class UmisComponent implements OnInit {
 
   umis: FilesModel[] = [];
+  umisAreLoaded: boolean = false;
   umiService = new UmiService;
 
   constructor() { }

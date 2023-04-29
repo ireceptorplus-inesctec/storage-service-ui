@@ -8,6 +8,7 @@ import { FilesModel } from 'src/models/files';
 })
 export class GermlinesComponent implements OnInit {
   germlines: FilesModel[] = [];
+  germlinesAreLoaded: boolean = false;
   germlineService = new GermlineService;
 
   constructor() {}
@@ -15,6 +16,7 @@ export class GermlinesComponent implements OnInit {
   ngOnInit(): void {
     this.germlineService.getAll().then(germlines => {
       this.germlines = germlines;
+      this.germlinesAreLoaded = true;
     });
   }
 }

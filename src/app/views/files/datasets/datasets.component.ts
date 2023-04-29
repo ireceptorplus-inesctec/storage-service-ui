@@ -10,6 +10,7 @@ import {FilesCreateComponent} from "../../../../components/files/files-create/fi
 export class DatasetsComponent implements OnInit {
   datasets: FilesModel[] = [];
   datasetService = new DatasetService;
+  datasetsAreLoaded: boolean = false;
 
   columnsToDisplayOnTable = [
     "UUID",
@@ -26,6 +27,7 @@ export class DatasetsComponent implements OnInit {
   ngOnInit(): void {
     this.datasetService.getAll().then(datasets => {
       this.datasets = datasets;
+      this.datasetsAreLoaded = true;
     })
   }
 

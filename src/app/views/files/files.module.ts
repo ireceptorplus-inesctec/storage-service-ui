@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
-  ButtonGroupModule,
-  ButtonModule,
-  CardModule,
-  FormModule,
-  GridModule,
-  ModalModule, ProgressModule,
-  TableModule,
+    ButtonGroupModule,
+    ButtonModule,
+    CardModule,
+    FormModule,
+    GridModule,
+    ModalModule, ProgressModule, SpinnerModule,
+    TableModule,
 } from '@coreui/angular';
 
 import { FilesRoutingModule } from './files-routing.module';
@@ -49,7 +49,8 @@ import {HttpClientModule} from "@angular/common/http";
         ModalModule,
         IconModule,
         ProgressModule,
-        HttpClientModule
+        HttpClientModule,
+        SpinnerModule
     ],
     declarations: [
         FilesTableComponent,

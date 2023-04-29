@@ -1,4 +1,5 @@
-<c-row ngPreserveWhitespaces>
+<c-spinner *ngIf="!filesAreLoaded"></c-spinner>
+<c-row *ngIf="filesAreLoaded" ngPreserveWhitespaces>
   <c-col xs="12">
     <c-card class="mb-4">
       <c-card-header>

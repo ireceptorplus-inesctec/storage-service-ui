@@ -13,6 +13,7 @@ import { FileDetailsComponent } from "../../file-details/file-details.component"
 })
 export class FilesTableComponent {
   @Input() files: FilesModel[] = [];
+  @Input() filesAreLoaded: boolean = false;
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Files";
   @Input() selectable: boolean = false;
