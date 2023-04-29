@@ -15,11 +15,11 @@
         </p>
         <div class="dropdown mb-3">
           <label for="inputDatasets" class="form-label">Input datasets</label>
-          <files-table id="inputDatasets" [files]="pipeline.inputDatasets"  ></files-table>
+          <files-table id="inputDatasets" [files]="pipeline.inputDatasets" [filesAreLoaded]="true"></files-table>
         </div>
         <div class="dropdown mb-3" *ngIf="pipeline.outputDatasets.length != 0">
           <label for="command" class="form-label">Output datasets</label>
-          <files-table id="command" [files]="pipeline.outputDatasets"  ></files-table>
+          <files-table id="command" [files]="pipeline.outputDatasets"  [filesAreLoaded]="true"></files-table>
         </div>
         <div class="dropdown mb-3">
           <p class="text-high-emphasis">
