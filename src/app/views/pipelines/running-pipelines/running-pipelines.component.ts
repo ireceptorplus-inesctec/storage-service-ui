@@ -22,6 +22,7 @@ export class RunningPipelinesComponent implements OnInit {
   ];
 
   runningPipelines: Pipeline[] = [];
+  pipelinesLoaded: boolean = false;
 
   contentName = "Pipelines";
 
@@ -30,6 +31,7 @@ export class RunningPipelinesComponent implements OnInit {
   ngOnInit(): void {
     this.finishedPipelineService.getAll().then(runningPipelines => {
       this.runningPipelines = runningPipelines;
+      this.pipelinesLoaded = true;
     })
   }
 

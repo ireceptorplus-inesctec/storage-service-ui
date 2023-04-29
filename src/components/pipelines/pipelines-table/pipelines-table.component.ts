@@ -15,6 +15,7 @@ import { PipelineDetailsComponent } from "../pipeline-details/pipeline-details.c
 })
 export class PipelinesTableComponent {
   @Input() pipelines: Pipeline[] = [];
+  @Input() pipelinesLoaded: boolean = false;
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Pipelines";
   @Input() selectable: boolean = false;

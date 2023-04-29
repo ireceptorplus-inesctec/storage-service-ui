@@ -21,6 +21,7 @@ export class ValidatedPipelinesComponent implements OnInit {
   ];
 
   awaitingValidationPipelines: Pipeline[] = [];
+  pipelinesLoaded: boolean = false;
 
   contentName = "Pipelines";
 
@@ -33,6 +34,7 @@ export class ValidatedPipelinesComponent implements OnInit {
       {
         pipeline.blockchainState = "IN_VOTING_ROUND";
       }
+      this.pipelinesLoaded = true;
     })
   }
 

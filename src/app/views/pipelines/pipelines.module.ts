@@ -3,12 +3,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import {
-  ButtonGroupModule,
-  ButtonModule, CalloutModule,
-  CardModule, DropdownModule,
-  FormModule,
-  GridModule, ModalModule,
-  TableModule,
+    ButtonGroupModule,
+    ButtonModule, CalloutModule,
+    CardModule, DropdownModule,
+    FormModule,
+    GridModule, ModalModule, SpinnerModule,
+    TableModule,
 } from '@coreui/angular';
 
 import { PipelinesRoutingModule } from './tools/pipelines-routing.module';
@@ -32,32 +32,33 @@ import {AwaitingValidationPipelinesComponent} from "./awaiting-validation-pipeli
 import {ValidatedPipelinesComponent} from "./validated-pipelines/validated-pipelines.component";
 
 @NgModule({
-  imports: [
-    FormsModule,
+    imports: [
+        FormsModule,
 
-    PipelinesRoutingModule,
-    CommonModule,
-    ReactiveFormsModule,
-    ComponentsModule,
+        PipelinesRoutingModule,
+        CommonModule,
+        ReactiveFormsModule,
+        ComponentsModule,
 
-    GridModule,
-    CardModule,
-    TableModule,
+        GridModule,
+        CardModule,
+        TableModule,
 
-    ButtonModule,
-    ButtonGroupModule,
-    FormModule,
+        ButtonModule,
+        ButtonGroupModule,
+        FormModule,
 
-    IconModule,
-    CardModule,
-    CalloutModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ModalModule,
-    FilesModule,
-    DropdownModule,
-  ],
+        IconModule,
+        CardModule,
+        CalloutModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ModalModule,
+        FilesModule,
+        DropdownModule,
+        SpinnerModule,
+    ],
   declarations: [
     ToolsComponent,
     CreatePipelineComponent,
