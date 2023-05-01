@@ -1,4 +1,5 @@
-<c-spinner *ngIf="!pipelinesLoaded"></c-spinner>
+
+<c-spinner class="loadingSpinner" *ngIf="!pipelinesLoaded"></c-spinner>
 <c-row *ngIf="pipelinesLoaded" ngPreserveWhitespaces>
   <c-col xs="12">
     <c-card class="mb-4">
