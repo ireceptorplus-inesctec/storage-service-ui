@@ -42,7 +42,7 @@ export class CreatePipelineComponent implements OnInit {
   @ViewChild(FilesCreateResultToastComponent) resultToast!: FilesCreateResultToastComponent;
   @ViewChild(FileSelectionComponent) fileSelectionComponent!: FileSelectionComponent;
 
-  @ViewChild(FilesCreateResultToastComponent) filesCreateResultToastComponent!: FilesCreateResultToastComponent;
+
 
   inputDatasets: FilesModel[] = new Array();
 
@@ -134,12 +134,13 @@ export class CreatePipelineComponent implements OnInit {
     if (success)
     {
       msgTitle = "Pipeline created successfully";
-      msgDescription = "The pipeline was sucessfully created on server";
+      msgDescription = "The pipeline was successfully created on server. You can check the progress in the Running pipelines page";
     }
     else
     {
       msgTitle = "Pipeline creation failed";
       msgDescription = "The pipeline creation has failed. Server returned: " + serverReturn;
     }
+    this.resultToast.toggleToast(msgTitle, msgDescription);
   }
 }
