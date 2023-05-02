@@ -63,7 +63,7 @@ export class PipelineDetailsComponent {
     this.traceabilityDataService.runPipeline(this.pipeline).then((serverReturn: any) => {
       let returnedPipeline: Pipeline = serverReturn;
       this.resultToast.toggleToast("Pipeline in queue to run",
-        "The pipeline has been added to the queue. YOu can check the progress in the Running pipelines page");
+        "The pipeline has been added to the queue. You can check the progress in the Running pipelines page");
     }, (serverReturn: Pipeline) => {
       this.resultToast.toggleToast("Pipeline has failed to run",
         "Server returned: " + serverReturn);
