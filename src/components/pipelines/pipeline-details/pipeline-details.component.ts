@@ -8,6 +8,7 @@ import {TraceabilityDataService} from "../../../app/services/traceability-data-s
 import {
   FilesCreateResultToastComponent
 } from "../../files/files-create-result-toast/files-create-result-toast.component";
+import {VoteResult} from "../../../models/VoteResult";
 
 @Component({
   selector: 'pipeline-details',
@@ -60,11 +61,16 @@ export class PipelineDetailsComponent {
 
   runPipelineAndSubmitVote()
   {
-    this.traceabilityDataService.runPipeline(this.pipeline).then((serverReturn: any) => {
-      let returnedPipeline: Pipeline = serverReturn;
+    this.traceabilityDataService.runPipeline(this.pipeline).then((serverReturn: VoteResult) => {
+      let voteResult: VoteResult = serverReturn;
+      let creationResultMsgDescription = "The pipeline has run and the vote" + voteResult.voteType + " has been submitted to the blockchain. ";
+      if (voteResult.stateChange)
+        creationResultMsgDescription += "The vote has caused the blockchain traceability data entry to change state. ";
+      creationResultMsgDescription += "Blokchain message returned: " + voteResult.message;
+
       this.resultToast.toggleToast("Pipeline in queue to run",
-        "The pipeline has been added to the queue. You can check the progress in the Running pipelines page");
-    }, (serverReturn: Pipeline) => {
+        creationResultMsgDescription);
+    }, (serverReturn: any) => {
       this.resultToast.toggleToast("Pipeline has failed to run",
         "Server returned: " + serverReturn);
     });
