@@ -26,7 +26,6 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
   runningPipelineService = new RunningPipelineService();
   finishedPipelineService = new FinishedPipelineService();
   traceabilityDataService = new TraceabilityDataService();
-  validatedTraceabilityDataService = new ValidatedTraceabilityDataService();
 
 
   runningPipelines: Pipeline[] = [];
@@ -156,7 +155,7 @@ export class WidgetsDropdownComponent implements OnInit, AfterContentInit {
       this.awaitingValidationPipelinesLoaded = true;
     })
 
-    this.validatedTraceabilityDataService.getAll().then(validatedPipelines => {
+    this.traceabilityDataService.getValidated().then(validatedPipelines => {
       this.validatedPipelines = validatedPipelines;
       for (let pipeline of this.validatedPipelines)
       {
