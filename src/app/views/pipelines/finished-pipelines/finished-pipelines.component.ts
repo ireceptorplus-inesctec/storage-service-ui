@@ -14,7 +14,6 @@ export class FinishedPipelinesComponent implements OnInit {
   finishedPipelineService = new FinishedPipelineService();
 
   columnsToDisplayOnTable = [
-    "UUID",
     "Name",
     "Description",
     "Date",
