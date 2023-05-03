@@ -18,7 +18,7 @@ export class ValidatedPipelinesComponent implements OnInit {
     "Creator"
   ];
 
-  awaitingValidationPipelines: Pipeline[] = [];
+  validatedPipelines: Pipeline[] = [];
   pipelinesLoaded: boolean = false;
 
   contentName = "Pipelines";
@@ -26,10 +26,10 @@ export class ValidatedPipelinesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.traceabilityDataService.getValidated().then(awaitingValidationPipelines => {
+    this.traceabilityDataService.getValidated().then(validatedPipelines => {
       this.traceabilityDataService.getMyOrgDetails().then(walletDetails => {
-        this.awaitingValidationPipelines = awaitingValidationPipelines;
-        for (let pipeline of this.awaitingValidationPipelines)
+        this.validatedPipelines = validatedPipelines;
+        for (let pipeline of this.validatedPipelines)
         {
           pipeline.blockchainState = "IN_VOTING_ROUND";
           pipeline.creatorID.id = walletDetails.userId;
