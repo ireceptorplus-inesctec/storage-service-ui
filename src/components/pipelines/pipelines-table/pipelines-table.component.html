@@ -27,7 +27,7 @@
                 ></c-icon>
               </button>
             </td>
-            <th scope="row">{{ pipeline.uuid }}</th>
+            <th *ngIf="showUuid" scope="row">{{ pipeline.uuid }}</th>
             <td *ngIf="showName">{{ pipeline.name }}</td>
             <td *ngIf="showDescription">{{ pipeline.description }}</td>
             <td *ngIf="showDate">{{ pipeline.creationDate }}</td>

@@ -19,6 +19,7 @@ export class PipelinesTableComponent {
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Pipelines";
   @Input() selectable: boolean = false;
+  @Input() showUuid: boolean = false;
   @Input() showName: boolean = true;
   @Input() showDescription: boolean = true;
   @Input() showDate: boolean = true;
@@ -35,7 +36,6 @@ export class PipelinesTableComponent {
   @ViewChild(PipelineDetailsComponent) pipelineDetailsComponent!: PipelineDetailsComponent;
 
   @Input() columnsToDisplay: string[] = [
-    "UUID",
     "Name",
     "Description",
     "Date",

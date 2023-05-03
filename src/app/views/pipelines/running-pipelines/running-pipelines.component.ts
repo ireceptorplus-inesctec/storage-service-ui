@@ -13,7 +13,6 @@ export class RunningPipelinesComponent implements OnInit {
   finishedPipelineService = new RunningPipelineService();
 
   columnsToDisplayOnTable = [
-    "UUID",
     "Name",
     "Description",
     "Date",
