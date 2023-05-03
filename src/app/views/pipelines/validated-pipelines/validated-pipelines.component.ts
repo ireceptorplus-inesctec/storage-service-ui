@@ -13,11 +13,8 @@ export class ValidatedPipelinesComponent implements OnInit {
 
   columnsToDisplayOnTable = [
     "UUID",
-    "Name",
-    "Description",
-    "Date",
-    "Tool",
-    "Command"
+    "Command",
+    "Creator"
   ];
 
   awaitingValidationPipelines: Pipeline[] = [];
