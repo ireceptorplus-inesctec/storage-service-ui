@@ -3,6 +3,7 @@
  */
 import {Command} from "./Command";
 import {FilesModel} from "./files";
+import {EntityID} from "./entityID";
 
 export class Pipeline {
   uuid: string;
@@ -18,6 +19,8 @@ export class Pipeline {
   outputDatasets: FilesModel[];
   blockchainState: string;
 
+  creatorID: EntityID;
+
   constructor() {
     this.uuid = "";
     this.name = "";
@@ -31,5 +34,6 @@ export class Pipeline {
     this.outputDatasets = [];
     this.outputDatasetsUuids = [];
     this.blockchainState = 'NOT_SUBMITTED';
+    this.creatorID = new EntityID();
   }
 }

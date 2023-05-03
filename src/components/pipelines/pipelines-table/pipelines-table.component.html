@@ -28,12 +28,13 @@
               </button>
             </td>
             <th scope="row">{{ pipeline.uuid }}</th>
-            <td>{{ pipeline.name }}</td>
-            <td>{{ pipeline.description }}</td>
-            <td>{{ pipeline.creationDate }}</td>
-            <td>{{ pipeline.command.toolName }}</td>
+            <td *ngIf="showName">{{ pipeline.name }}</td>
+            <td *ngIf="showDescription">{{ pipeline.description }}</td>
+            <td *ngIf="showDate">{{ pipeline.creationDate }}</td>
+            <td *ngIf="showTool">{{ pipeline.command.toolName }}</td>
             <td>{{ pipeline.command.commandString }}</td>
             <td *ngIf="showBlockchainState">{{ pipeline.blockchainState }}</td>
+            <td *ngIf="showCreator">{{ pipeline.creatorID.id }}</td>
           </tr>
           </tbody>
         </table>

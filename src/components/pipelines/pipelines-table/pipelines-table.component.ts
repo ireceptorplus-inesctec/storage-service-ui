@@ -19,7 +19,12 @@ export class PipelinesTableComponent {
   @Input() actionName: string = "Details";
   @Input() contentName: string = "Pipelines";
   @Input() selectable: boolean = false;
+  @Input() showName: boolean = true;
+  @Input() showDescription: boolean = true;
+  @Input() showDate: boolean = true;
+  @Input() showTool: boolean = true;
   @Input() showBlockchainState: boolean = true;
+  @Input() showCreator: boolean = false;
 
   selectedFiles: FilesModel[] = new Array();
   @Output() selectedFilesOutput = new EventEmitter<FilesModel[]>();
