@@ -32,7 +32,11 @@ export class AwaitingValidationPipelinesComponent implements OnInit {
         for (let pipeline of this.awaitingValidationPipelines)
         {
           pipeline.blockchainState = "IN_VOTING_ROUND";
-          pipeline.creatorID.id = walletDetails.userId;
+          let blockchainId = pipeline.creatorID.id;
+          pipeline.creatorID.id = blockchainId.substring(
+            blockchainId.indexOf("=") + 1,
+            blockchainId.indexOf(",")
+          );
         }
         this.pipelinesLoaded = true;
       })
