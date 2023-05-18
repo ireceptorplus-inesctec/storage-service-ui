@@ -63,7 +63,7 @@ export class PipelineDetailsComponent {
   {
     this.traceabilityDataService.runPipeline(this.pipeline).then((serverReturn: VoteResult) => {
       let voteResult: VoteResult = serverReturn;
-      let creationResultMsgDescription = "The pipeline has run and the vote" + voteResult.voteType + " has been submitted to the blockchain. ";
+      let creationResultMsgDescription = "The pipeline has run and the vote " + voteResult.voteType + " has been submitted to the blockchain. ";
       if (voteResult.stateChange)
         creationResultMsgDescription += "The vote has caused the blockchain traceability data entry to change state. ";
       creationResultMsgDescription += "Blokchain message returned: " + voteResult.message;
